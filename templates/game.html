@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#080f1d">
+<title>Empresário por 5 Minutos | Simulador de Ciências de Dados</title>
+<style>
+:root{--bg:#080f1d;--panel:#111d2d;--panel2:#17283b;--border:#2a4053;--muted:#94a9bb;--text:#edf6fb;--green:#65e0b1;--gold:#f6c96e;--blue:#7cb7ef;--red:#ff8f91;--shadow:0 18px 46px #02091455}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(ellipse 85% 35% at 45% -10%,#22425e 0%,transparent 80%),var(--bg);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,select{font:inherit}button{cursor:pointer;border:1px solid transparent;border-radius:11px;color:var(--text);background:#2b4760;padding:11px 14px;font-weight:750;transition:transform .2s,background .2s,border-color .2s}button:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.1)}button:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:2px}button:disabled{opacity:.42;cursor:not-allowed}select{appearance:auto;min-width:0;background:#102135;color:var(--text);border:1px solid #46627c;border-radius:10px;padding:10px;width:100%}h1,h2,h3,p{margin-top:0}.app{max-width:1510px;padding:24px; margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:21px}.identity{display:flex;gap:15px;align-items:center}.logo{width:58px;height:58px;border:1px solid #ffd88760;display:grid;place-items:center;border-radius:18px;background:linear-gradient(135deg,#305e56,#162d42);box-shadow:inset 0 1px 0 #ffffff32,0 9px 23px #0006;font-size:28px}.kicker{font-size:10px;letter-spacing:.19em;font-weight:850;text-transform:uppercase;color:var(--green)}h1{font-size:clamp(21px,2.4vw,32px);letter-spacing:-.045em;margin:0;line-height:1.22}.subtitle{color:var(--muted);font-size:12px;margin:5px 0 0}.header-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pill{padding:9px 13px;background:#112338;border:1px solid var(--border);border-radius:12px;color:var(--muted);font-size:12px}.pill strong{color:#fff}.primary{background:linear-gradient(135deg,#74e1b7,#31ae88);color:#09251c}.secondary{background:#1a3046;border-color:#35516a}.outline{border-color:#375971;background:#102136}.small{padding:8px 11px;font-size:12px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:17px}.stat,.panel{background:linear-gradient(160deg,#182b3e,#101c2c 83%);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}.stat{padding:17px 18px;position:relative;overflow:hidden}.stat:before{content:"";position:absolute;height:3px;left:17px;right:17px;top:0;background:linear-gradient(90deg,var(--green),transparent)}.stat:nth-child(2):before{background:linear-gradient(90deg,var(--gold),transparent)}.stat:nth-child(3):before{background:linear-gradient(90deg,var(--blue),transparent)}.stat:nth-child(4):before{background:linear-gradient(90deg,#b49afa,transparent)}.stat-label{font-size:10px;font-weight:850;letter-spacing:.1em;color:var(--muted)}.stat-value{font-size:clamp(19px,2.3vw,29px);font-weight:850;letter-spacing:-.05em;margin:8px 0 3px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.stat-detail{color:var(--muted);font-size:11px}.positive{color:var(--green)!important}.negative{color:var(--red)!important}.dashboard{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(330px,.87fr);gap:16px}.column{min-width:0;display:flex;flex-direction:column;gap:16px}.panel{padding:18px;min-width:0}.panel-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.panel-header h2{font-size:16px;letter-spacing:-.015em;margin:0}.panel-header p{font-size:11px;color:var(--muted);margin:3px 0 0}.tag{font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--gold);background:#ffcd6320;border:1px solid #ecc57646;padding:6px 9px;border-radius:9px;white-space:nowrap}.scene{position:relative;isolation:isolate;height:315px;border:1px solid #567087;overflow:hidden;border-radius:16px;background:#8bbfd9;--sky-top:#78b7df;--sky-low:#d0ebde;--light:.9;transition:background 1.4s}.scene .sky{position:absolute;inset:0;background:linear-gradient(var(--sky-top),var(--sky-low) 74%,#749a77);transition:background 1.2s}.scene:after{content:"";position:absolute;inset:0;z-index:13;pointer-events:none;background:linear-gradient(0deg,#05122519,transparent 37%),linear-gradient(90deg,#0b203420,transparent 35%,#071c2c25)}.stars{position:absolute;inset:0;opacity:0;transition:opacity 1.2s;background-image:radial-gradient(#fff 1px,transparent 2px),radial-gradient(#fff 1.2px,transparent 2px);background-size:81px 74px,137px 94px;background-position:18px 9px,51px 40px}.sunmoon{position:absolute;z-index:1;top:13%;left:70%;width:51px;height:51px;border-radius:50%;background:#fff0b6;box-shadow:0 0 42px #fff2a488;transition:top 1.2s,background 1.2s,box-shadow 1.2s}.sunmoon:after{content:"";display:none;position:absolute;width:45px;height:45px;border-radius:50%;background:#1b3257;left:16px;top:-10px}.cloud{position:absolute;top:20%;height:18px;width:80px;background:#ffffffb4;border-radius:30px;filter:blur(.4px);animation:drift 38s ease-in-out infinite alternate}.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}.cloud:before{width:36px;height:32px;left:12px;bottom:4px}.cloud:after{width:44px;height:26px;left:33px;bottom:2px}.cloud.c2{left:48%;top:13%;transform:scale(.7);animation-delay:-14s}.cloud.c1{left:10%}@keyframes drift{to{translate:50px 0}}.hills{position:absolute;bottom:25%;left:-5%;width:110%;height:39%;background:#5f966e;clip-path:polygon(0 67%,12% 46%,24% 56%,39% 28%,53% 59%,68% 35%,82% 65%,95% 38%,100% 49%,100% 100%,0 100%);opacity:.65}.hills.back{background:#6b8d9c;bottom:31%;height:43%;opacity:.5;transform:scaleX(-1)}.ground{position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(#73aa6c,#4f855e);z-index:3}.walkway{position:absolute;bottom:13%;width:100%;height:12%;background:linear-gradient(#d4c4a5,#a3a69b);border-top:3px solid #eeeece;z-index:4}.street{position:absolute;bottom:0;height:14%;width:100%;background:#394a56;z-index:8;border-top:4px solid #607984}.street:after{content:"";position:absolute;left:0;right:0;top:58%;border-top:3px dashed #eedcacaa}.scene-objects{position:absolute;inset:0;z-index:6;pointer-events:none}.property{position:absolute;bottom:25%;width:20%;height:54%;min-width:0;display:flex;align-items:flex-end;justify-content:center;transition:filter .8s,transform .45s;filter:drop-shadow(4px 10px 5px #122c3655)}.property svg{width:100%;height:100%;overflow:visible}.property .lit-window{fill:#92ddec;transition:fill 1.2s}.property .unit-label{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);background:#0c243ce6;border:1px solid #b6d7d880;color:white;border-radius:7px;padding:3px 6px;white-space:nowrap;font-size:10px;font-weight:800;z-index:2}.property .unit-label b{color:var(--gold)}.property .built-sign{font-size:10px;font-weight:900;fill:#f7fcff;letter-spacing:1px}.property.shop{left:3%;height:39%;width:20%}.property.factory{left:26%;height:51%;width:22%}.property.tech{left:51%;height:65%;width:18%}.property.farm{right:2%;height:42%;width:25%}.property.hidden{display:none}.property.multiple:after{content:"";position:absolute;top:12%;right:1%;width:13px;height:47%;background:#395468;border:1px solid #d1e2d1;z-index:-1;transform:skewY(-13deg)}.plant{position:absolute;z-index:7;bottom:16%;width:28px;height:61px;pointer-events:none}.plant svg{width:100%;height:100%}.plant.p1{left:1%;width:26px;height:49px}.plant.p2{left:23%;width:25px;height:58px}.plant.p3{left:47%;width:22px;height:44px}.plant.p4{left:72%;width:27px;height:66px}.plant.p5{right:0%;width:24px;height:46px}.bush{position:absolute;z-index:7;bottom:15%;height:13px;width:43px;background:#296d55;border:2px solid #6cba79;border-radius:60% 50% 20% 20%}.bush.b1{left:16%}.bush.b2{left:67%}.bush.b3{right:4%}.ambient-tag{position:absolute;top:12px;left:12px;z-index:14;background:#07192ecb;border:1px solid #d4e9f253;border-radius:10px;padding:6px 10px;font-size:11px;font-weight:850;backdrop-filter:blur(8px)}.city-empty{position:absolute;z-index:10;bottom:29%;left:50%;transform:translateX(-50%);padding:10px 14px;max-width:85%;text-align:center;background:#0b213ddc;border:1px solid #d0eaff57;border-radius:11px;font-size:12px}.scene.night{--sky-top:#101d38;--sky-low:#364b71}.scene.night .stars{opacity:.85}.scene.night .sunmoon{background:#f2f4d6;box-shadow:0 0 24px #edf6cf66}.scene.night .sunmoon:after{display:block}.scene.night .lit-window{fill:#ffd17b;filter:drop-shadow(0 0 3px #ffd17b)}.scene.night .cloud{opacity:.23}.scene.night .ground{filter:brightness(.6)}.scene.night .hills{filter:brightness(.57)}.scene.sunset{--sky-top:#6c79ab;--sky-low:#f1a56e}.scene.sunset .sunmoon{background:#ffbd7b;top:46%;box-shadow:0 0 53px #f0a16c}.scene.sunset .stars{opacity:.3}.scene.afternoon{--sky-top:#7aafd6;--sky-low:#f4d49e}.scene.afternoon .sunmoon{top:27%;background:#ffdf83}.scene.morning{--sky-top:#80b7d9;--sky-low:#d8ecdf}.scene.morning .sunmoon{top:13%}.scene-footer{display:flex;justify-content:space-between;gap:9px;align-items:center;margin-top:9px;color:var(--muted);font-size:11px}.progress{height:7px;background:#081521;border-radius:999px;overflow:hidden;margin-top:11px}.progress>div{width:0;height:100%;background:linear-gradient(90deg,var(--gold),var(--green));transition:width .22s}.section-note{font-size:11px;color:var(--muted);margin:-5px 0 13px}.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.action{position:relative;border:1px solid #34495e;background:linear-gradient(155deg,#1a3043,#102035);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0;transition:transform .2s,border-color .2s}.action:hover{border-color:#6d977d;transform:translateY(-2px)}.action-top{display:flex;align-items:center;gap:9px}.action-icon{width:40px;height:40px;border-radius:12px;background:#294962;display:grid;place-items:center;font-size:23px}.action h3{margin:0;font-size:13px}.action p{font-size:11px;line-height:1.5;color:var(--muted);margin:0;min-height:33px}.cost{color:var(--gold);font-size:11px;font-weight:850}.action-footer{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:auto}.action-footer button{flex:1;font-size:12px;padding:9px}.action select{max-width:100px;font-size:12px;padding:8px 5px}.action .count{font-size:10px;color:var(--blue);font-weight:750}.divider-title{font-size:10px;letter-spacing:.13em;color:var(--muted);font-weight:850;margin:16px 0 11px;text-transform:uppercase}.indicators{display:flex;flex-direction:column;gap:13px}.indicator-head{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:5px}.indicator-head span{color:#d7e8ef}.indicator-head b{font-variant-numeric:tabular-nums}.bar{height:8px;border-radius:20px;overflow:hidden;background:#081725}.bar>div{height:100%;border-radius:20px;background:linear-gradient(90deg,#31b88a,#85ebbe);transition:width .4s}.bar.blue>div{background:linear-gradient(90deg,#4b8dd4,#8dcafc)}.bar.gold>div{background:linear-gradient(90deg,#bf8f43,#ffdf8b)}.finance-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.fin{background:#0b1a2c;border:1px solid #273e55;border-radius:11px;padding:11px}.fin span{font-size:10px;color:var(--muted)}.fin b{display:block;margin-top:4px;font-size:clamp(13px,1.4vw,18px);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.breakdown{border-collapse:collapse;width:100%;margin-top:12px;font-size:11px}.breakdown th,.breakdown td{text-align:left;border-bottom:1px solid #294054;padding:7px 4px}.breakdown th{color:var(--muted);font-weight:650}.breakdown td:not(:first-child),.breakdown th:not(:first-child){text-align:right}.breakdown tfoot td{font-weight:800;color:var(--gold)}.log{max-height:260px;overflow:auto;display:flex;flex-direction:column;gap:7px;scrollbar-color:#4a6c7e transparent}.logitem{padding:10px 11px;background:#0d2032;border-left:3px solid #80a7cf;border-radius:0 9px 9px 0;font-size:11px;color:#d2e0e7;line-height:1.5}.logitem.good{border-color:var(--green)}.logitem.bad{border-color:var(--red)}.logitem.event{border-color:var(--gold)}.logitem small{display:block;color:var(--muted);margin-bottom:3px}.foot{text-align:center;color:var(--muted);font-size:11px;margin-top:19px}.overlay{position:fixed;inset:0;background:#050d19df;z-index:40;display:none;place-items:center;padding:15px;overflow:auto;backdrop-filter:blur(8px)}.overlay.active{display:grid}.modal{max-width:680px;width:100%;max-height:94vh;overflow:auto;background:linear-gradient(145deg,#1c3446,#101d2e);border:1px solid #67899b;border-radius:22px;box-shadow:0 30px 100px #000b;padding:24px}.modal h2{margin:8px 0}.score{font-size:35px;color:var(--gold);font-weight:900}.modal p{color:#ccdce4;font-size:13px}.modal .finance-grid{margin:14px 0}.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.modal-actions button{flex:1}.legend{display:flex;flex-wrap:wrap;gap:9px;font-size:10px;color:var(--muted);margin-top:7px}.legend span{background:#142b3f;padding:4px 7px;border-radius:7px}.notice{color:var(--gold);font-size:11px}.wide-actions{grid-column:1/-1}.compact-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media(max-width:1060px){.dashboard{grid-template-columns:minmax(0,1fr)}.column.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start}.side .panel:last-child{grid-column:1/-1}.scene{height:340px}}@media(max-width:670px){.app{padding:12px}.top{align-items:flex-start}.header-actions{width:100%;justify-content:space-between}.pill{flex:1;text-align:center}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat{padding:13px}.stat-value{font-size:21px}.panel{padding:13px;border-radius:15px}.scene{height:245px}.property.shop{width:22%;left:1%}.property.factory{left:23%;width:24%}.property.tech{left:48%;width:20%}.property.farm{right:0;width:28%}.property .unit-label{font-size:8px;padding:2px 4px;bottom:-16px}.scene-footer{font-size:10px}.column.side{display:flex}.actions{gap:8px}.action{padding:11px}.action-icon{width:32px;height:32px;font-size:19px}.action h3{font-size:12px}.action p{font-size:10px}.action-footer{flex-wrap:wrap}.action select{max-width:100%;width:100%}.action-footer button{width:100%}.tag{font-size:9px}.panel-header{align-items:flex-start}.fin b{font-size:15px}}@media(max-width:370px){.actions{grid-template-columns:1fr}.scene{height:210px}.property .unit-label{font-size:7px}.logo{width:45px;height:45px}.stat-value{font-size:18px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Painel analítico destacado e responsivo */
+.analytics-overview{margin-bottom:17px;border-color:#487d81;background:linear-gradient(125deg,#153c47,#122337 72%)}.analytics-overview .panel-header{margin-bottom:9px}.chart-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,215px);gap:20px;align-items:center}.chart-plot{min-width:0;background:#0a1d2c;border:1px solid #34536a;padding:10px 11px 5px;border-radius:12px}.chart-plot svg{width:100%;height:122px;display:block;overflow:visible}.chart-axis{display:flex;justify-content:space-between;color:#98b1c4;font-size:10px}.chart-meta{display:grid;gap:8px}.chart-meta>div{padding:8px 11px;background:#0d2735;border-radius:9px}.chart-meta span{display:block;color:#9fb6c5;font-size:10px}.chart-meta strong{display:block;font-size:17px;font-variant-numeric:tabular-nums}.chart-meta button{width:100%}#analytics,#financePanel{scroll-margin-top:15px}.sunmoon{left:4%;top:50%;transition:left .18s linear,top .18s linear,background 1s,box-shadow 1s}.scene.morning .sunmoon,.scene.afternoon .sunmoon,.scene.sunset .sunmoon{top:auto}.scene.night .sunmoon:after{background:var(--sky-top)}
+@media(max-width:670px){.chart-layout{grid-template-columns:1fr;gap:9px}.chart-meta{grid-template-columns:1fr 1fr}.chart-meta button{grid-column:1/-1}.chart-plot svg{height:115px}.chart-meta strong{font-size:14px}.analytics-overview{padding:13px}.header-actions #chartsBtn{background:#275d64;border-color:#6c9d9b}}
+</style>
+<style>
+.strategy-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 7px}.metric-card{border-radius:14px;padding:16px;background:linear-gradient(150deg,#102b3c,#0b1d30);border:1px solid #426479;min-width:0;box-shadow:inset 0 1px 0 #ffffff10}.metric-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:850;font-size:14px}.metric-heading strong{font-size:22px;font-variant-numeric:tabular-nums}.metric-track{height:15px;margin:13px 0 10px;border-radius:999px;background:#05131e;overflow:hidden;border:1px solid #365268}.metric-fill{height:100%;border-radius:999px;transition:width .45s ease}.metric-blue{background:linear-gradient(90deg,#448ee1,#92caff)}.metric-gold{background:linear-gradient(90deg,#ce903d,#ffe18b)}.metric-green{background:linear-gradient(90deg,#2cac80,#8df0c2)}.metric-card p{font-size:11px;color:#bacdd9;margin:0;line-height:1.5}.profit-details{margin-top:14px;border-top:1px solid #426277;padding-top:11px}.profit-details summary{font-weight:750;cursor:pointer;color:#bfe4fb;padding:6px 2px}.profit-details .chart-layout{margin-top:13px}@media(max-width:700px){.strategy-metrics{grid-template-columns:1fr;gap:9px}.metric-card{padding:12px 14px}.metric-track{margin:8px 0}.metric-heading strong{font-size:20px}}
+</style>
+<style>
+.business-intelligence{margin-bottom:17px;border:1px solid #4b98a0;background:linear-gradient(130deg,#17394a,#101d30 80%);box-shadow:0 12px 35px #0003;scroll-margin-top:14px}
+.business-intelligence .indicators{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.business-intelligence .indicators>div{padding:15px 13px;border:1px solid #37566f;border-radius:13px;background:#0b2031}
+.business-intelligence .indicator-head{font-size:13px;margin-bottom:11px;display:flex;gap:8px;justify-content:space-between;align-items:center}
+.business-intelligence .indicator-head b{color:#f8d27e;font-size:19px;white-space:nowrap}
+.business-intelligence .bar{height:12px;border-radius:999px;overflow:hidden;background:#071421}
+.business-intelligence .bar>div{height:100%;border-radius:999px;transition:width .35s}
+#pauseBtn{min-width:122px}
+@media(max-width:850px){.business-intelligence .indicators{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:440px){.business-intelligence .indicators{grid-template-columns:1fr}.business-intelligence .indicators>div{padding:10px 13px}.business-intelligence .indicator-head{margin-bottom:7px}}
+</style>
+<style>
+/* Nova navegação por setores e inspeção econômica */
+.sector-kpis .sector-valuation{grid-column:1/-1;background:linear-gradient(110deg,#123948,#122536);border-color:#477e80}
+.sector-kpis .sector-valuation b{color:#f6c96e}
+@media(max-width:460px){.sector-kpis{grid-template-columns:1fr}.sector-kpis .sector-valuation{grid-column:auto}}
+.action.sector-action{border-color:#426978;background:linear-gradient(145deg,#1b3548,#0c2233)}
+.action.sector-action .sector-open{background:#214b5a;border:1px solid #6daab5;color:#e9fcff;width:100%;font-size:12px}
+.action.sector-action .count{font-size:11px;color:#a5d5c9}
+.property{pointer-events:auto;cursor:pointer}.property svg{pointer-events:none}.property:focus-visible{outline:3px solid #f6c96e;outline-offset:3px;border-radius:6px}.property:hover{filter:drop-shadow(0 0 12px #8cdbd4a6);transform:translateY(-4px)}
+.sector-modal{max-width:760px}.sector-head{display:flex;align-items:center;gap:14px;margin-bottom:13px}.sector-symbol{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:30px;background:#244e62;border:1px solid #5e91a6}.sector-head h2{margin:0}.sector-head p{margin:3px 0 0}
+.sector-pills{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.sector-pills span{font-size:11px;padding:6px 9px;background:#0b2637;border:1px solid #41667b;border-radius:9px}.sector-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.sector-kpis .fin{padding:14px}.sector-kpis .fin b{font-size:21px}.sector-explain{font-size:12px;line-height:1.65;color:#c8dce7;background:#0c2537;border:1px solid #35576b;padding:12px;border-radius:12px;margin-top:12px}.sector-inspect{font-size:11px;color:#9ec8d7;margin:7px 0 0}
+.sunmoon{display:flex;align-items:center;justify-content:center;overflow:visible}.moon-art{display:none;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 10px #fff2ca8a)}.scene.night .sunmoon{background:transparent;box-shadow:none}.scene.night .sunmoon:after{display:none}.scene.night .moon-art{display:block}.scene.night .sunmoon{width:57px;height:57px}
+@media(max-width:560px){.sector-kpis{grid-template-columns:1fr 1fr}.sector-kpis .fin b{font-size:17px}.sector-modal{padding:15px}.sector-head h2{font-size:19px}}
+</style>
+<style>
+/* Painel financeiro e venda de ativos */
+.finance-grid.fin-six{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fin-six .fin{border-color:#395970;min-height:69px}.fin-six .fin b{font-size:clamp(16px,1.5vw,20px)}
+.sector-sale{margin-top:15px;padding:15px;border:1px solid #4d7581;border-radius:14px;background:#0c2432;display:grid;gap:10px}
+.sector-sale h3{margin:0;font-size:15px}.sector-sale p{margin:0;color:#bfd3dd;font-size:12px}
+.sector-sale .sale-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sector-sale select{max-width:100px}.sector-sale button{background:#9b623c;color:#fff;border-color:#dca36c}
+.sector-sale button:disabled{opacity:.42}.sector-sale .sale-quote{color:#f6d18a;font-weight:800}
+/* Camadas da paisagem ocultam os astros no nascimento e no ocaso */
+.scene .sky{z-index:0}.scene .sunmoon{z-index:1;transform:translate(-50%,-50%);will-change:left,top}
+.scene .hills{z-index:2;opacity:1}.scene .hills.back{z-index:2;opacity:.72}.scene .ground{z-index:3}
+.scene .sky{transition:none}.scene .stars{transition:opacity .7s}.scene .sunmoon{transition:background .8s,box-shadow .8s,left .12s linear,top .12s linear}
+.scene .ambient-dusk{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,#f4b77c44,transparent 65%);opacity:0;transition:opacity .6s}
+@media(max-width:480px){.sector-sale .sale-row{flex-direction:column;align-items:stretch}.sector-sale select{max-width:100%}}
+</style>
+<style>
+/* Alertas e apresentação. A segunda fachada fantasma de unidades múltiplas foi removida. */
+.property.multiple::after{content:none!important;display:none!important}
+.property.multiple{filter:drop-shadow(4px 10px 5px #122c3655)}
+.property.multiple:hover{filter:drop-shadow(0 0 12px #8cdbd4a6)}
+.property .unit-label{box-shadow:0 3px 11px #06111caa}
+.toast-zone{position:fixed;top:18px;right:18px;z-index:110;display:grid;gap:9px;width:min(380px,calc(100vw - 28px));pointer-events:none}
+.news-toast{background:linear-gradient(125deg,#12364a,#0c1d2e);border:1px solid #487f99;border-left:5px solid #75c0fa;border-radius:15px;box-shadow:0 18px 55px #000a;padding:13px 15px;animation:toast-enter .26s ease-out;pointer-events:none}
+.news-toast.good{border-left-color:#65e0b1}.news-toast.bad{border-left-color:#ff8f91}.news-toast.event{border-left-color:#f6c96e}
+.news-toast strong{font-size:13px;display:block;color:#fff;margin-bottom:4px}.news-toast p{font-size:12px;line-height:1.45;color:#d4e5ef;margin:0}
+.news-toast .news-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;color:#abc2d2;font-size:10px}
+.news-toast button{padding:2px 7px;background:#29465b;font-size:13px;border:0;pointer-events:auto}
+@keyframes toast-enter{from{opacity:0;transform:translate(22px,-5px)}to{opacity:1;transform:none}}
+.cooldown-label{font-size:11px;color:#f8d184;margin-top:6px;min-height:0}
+/* Contagem real dos últimos 30 segundos: discreta, central e sem bloquear decisões. */
+/* Contador centralizado horizontalmente, na faixa superior da tela. */
+.final-alert{position:fixed;top:clamp(12px,3.8vh,42px);left:0;right:0;bottom:auto;z-index:175;display:flex;justify-content:center;align-items:flex-start;pointer-events:none;padding:0 14px}
+.final-alert[hidden]{display:none!important}
+.final-alert-card{min-width:min(190px,65vw);max-width:min(265px,80vw);padding:11px 18px 13px;text-align:center;
+ background:rgba(7,22,36,.58);border:1px solid rgba(165,216,218,.24);border-radius:22px;
+ box-shadow:0 12px 32px rgba(0,0,0,.25);color:#f4faff;animation:countdown-enter .23s ease-out both}
+.final-alert-card .eyebrow{display:block;font-size:10px;letter-spacing:.13em;font-weight:850;color:#ffe0a2}
+.final-alert-number{display:block;font-size:clamp(52px,8vw,90px);font-weight:950;line-height:1.08;letter-spacing:-.055em;
+ font-variant-numeric:tabular-nums;font-feature-settings:'tnum';text-shadow:0 4px 18px rgba(0,0,0,.42)}
+.final-alert-unit{display:block;color:#b9d6e1;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.11em}
+.final-alert.urgent .final-alert-card{border-color:rgba(255,160,132,.44);background:rgba(39,18,30,.62)}
+.final-alert.urgent .final-alert-number{color:#ffc09f}
+@keyframes countdown-enter{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:480px){.final-alert{top:clamp(10px,2.5vh,24px)}.final-alert-card{min-width:min(174px,68vw);padding:9px 14px 11px}.final-alert-number{font-size:clamp(48px,14vw,68px)}}
+@media(orientation:landscape) and (max-height:520px){.final-alert{top:8px}.final-alert-card{padding:6px 14px 8px}.final-alert-number{font-size:clamp(42px,11vh,60px)}.final-alert-card .eyebrow,.final-alert-unit{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.final-alert-card{animation:none}}
+
+button.cooling{background:#354151!important;border-color:#62768b!important;color:#ffde94!important;opacity:.85!important}
+.guide-overlay{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:15px;background:#040b17ef;backdrop-filter:blur(9px);overflow:auto}
+.guide-overlay[hidden]{display:none!important}
+.guide-card{width:min(740px,100%);max-height:94vh;overflow:auto;border:1px solid #568597;border-radius:22px;padding:clamp(18px,3vw,30px);background:linear-gradient(145deg,#1c3b4d,#101d2f);box-shadow:0 25px 80px #000a}
+.guide-card h2{font-size:clamp(22px,3vw,30px);margin:6px 0}.guide-card .intro{color:#bdcfda;font-size:13px}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.guide-step{background:#102a3d;border:1px solid #37576d;border-radius:12px;padding:13px;min-width:0}
+.guide-step strong{display:block;color:#f4d38e;font-size:13px;margin-bottom:4px}.guide-step p{margin:0;font-size:12px;color:#cfdee7;line-height:1.5}
+.guide-check{display:flex;gap:10px;align-items:flex-start;margin:17px 0;background:#0c2636;border:1px solid #507585;padding:13px;border-radius:12px;cursor:pointer;font-size:13px}
+.guide-check input{height:18px;width:18px;accent-color:#65e0b1;flex-shrink:0;margin-top:1px}
+.guide-start{width:100%;padding:14px;font-size:15px}
+.guide-start:disabled{opacity:.42}
+@media(max-width:600px){.guide-grid{grid-template-columns:1fr}.toast-zone{right:10px;top:10px}.guide-card{padding:16px}.guide-step{padding:10px}}
+@media(prefers-reduced-motion:reduce){.news-toast{animation:none}}
+</style>
+<style>
+/* Classificação econômica visível ao concluir a partida */
+.revenue-rank{margin:18px 0;padding:15px;border-radius:15px;background:#0d2636;border:1px solid #457384}
+.revenue-rank h3{margin:0 0 5px;font-size:16px;color:#e9f6ff}.revenue-rank>p{margin:0 0 12px;color:#acc9d5;font-size:12px}
+.revenue-tier-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.revenue-tier{padding:11px 12px;background:#132e40;border:1px solid #335468;border-radius:12px;display:flex;flex-direction:column;gap:4px}
+.revenue-tier .tier-range{font-size:10px;color:#aac4d6;font-weight:700}
+.revenue-tier strong{font-size:14px;color:#ecf6fb}
+.revenue-tier .tier-message{font-size:11px;color:#bdd0d8;line-height:1.4}
+.revenue-tier.selected{background:linear-gradient(120deg,#205c56,#203b48);border:2px solid #71e4b0;box-shadow:0 0 0 2px #70dda324}
+.revenue-tier.selected strong{color:#a6ffd5}
+@media(max-width:540px){.revenue-tier-list{grid-template-columns:1fr}}
+/* Falência tem precedência sobre títulos de faturamento. */
+.revenue-tier.bankrupt{background:linear-gradient(120deg,#54252e,#281f31);border:2px solid #ff7d88;box-shadow:0 0 0 2px #ff7d881a}
+.revenue-tier.bankrupt strong{color:#ffb1b5}
+.revenue-tier.bankrupt .tier-range{color:#ffd3d6}
+
+</style>
+
+<style>
+/* Compatibilidade com telas pequenas, navegadores móveis e rotação. */
+html{min-width:0}body{min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,select,input{touch-action:manipulation}button{min-height:42px}
+.guide-overlay{height:100vh;height:100dvh;align-items:safe center;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.guide-card{max-height:calc(100vh - 26px);max-height:calc(100dvh - 26px);overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.guide-check{min-height:52px}.guide-check input{min-width:20px;min-height:20px}
+@media(max-width:600px){
+ .app{padding:10px;max-width:100%}.identity{min-width:0}.identity>div:last-child{min-width:0}
+ .header-actions{gap:6px}.header-actions button{flex:1 1 auto;min-height:44px}
+ .business-intelligence .panel-header{flex-wrap:wrap}
+ .scene{height:clamp(190px,58vw,270px)}
+ .action-footer button,.sector-open{min-height:44px}
+ .sector-modal,.modal{max-width:calc(100vw - 20px);max-height:calc(100dvh - 20px);overflow:auto}
+ .guide-overlay{padding:8px}.guide-card{border-radius:14px;padding:13px;max-height:calc(100dvh - 16px)}
+ .guide-card h2{font-size:21px}.guide-grid{gap:7px;margin:10px 0}.guide-step{padding:9px}
+ .guide-start{position:sticky;bottom:0;z-index:2;box-shadow:0 -8px 20px #091927d9}
+}
+@media(max-width:360px){.header-actions .pill{flex:1 1 45%}.scene{height:195px}}
+@media(orientation:landscape) and (max-height:480px){.guide-card{max-height:calc(100dvh - 12px)}.guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+<style>
+/* Edição 9: visual compacto para monitor e TV sem comprometer leitura */
+.app{max-width:1600px;padding:14px 18px}
+.top{gap:10px;margin-bottom:10px}.identity{gap:10px}.logo{width:44px;height:44px;border-radius:12px;font-size:22px}
+.top h1{font-size:clamp(19px,2vw,25px)}.top .subtitle{margin-top:2px;font-size:11px}
+.kicker{font-size:9px}.header-actions{gap:6px}.header-actions .pill{padding:7px 10px}
+.header-actions button{padding:7px 10px;min-height:36px}
+.stats{gap:9px;margin-bottom:10px}.stat{padding:10px 13px;border-radius:12px}
+.stat:before{left:12px;right:12px}.stat-label{font-size:9px}.stat-value{font-size:clamp(18px,2vw,24px);margin:3px 0 0}
+.stat-detail{font-size:10px}.business-intelligence{padding:11px 13px;margin-bottom:10px;border-radius:14px}
+.business-intelligence .panel-header{margin-bottom:7px}.business-intelligence .indicators{gap:8px}
+.business-intelligence .indicators>div{padding:9px 10px;border-radius:10px}
+.business-intelligence .indicator-head{font-size:11px;margin-bottom:6px}.business-intelligence .indicator-head b{font-size:16px}
+.business-intelligence .bar{height:8px}.business-intelligence #teamWarning{margin:8px 0 0!important;font-size:10px}
+.dashboard{grid-template-columns:minmax(0,1.78fr) minmax(310px,.9fr);gap:11px}
+.column{gap:11px}.panel{padding:13px;border-radius:14px}.panel-header{margin-bottom:9px}
+.panel-header h2{font-size:14px}.panel-header p{font-size:10px}.scene{height:275px}
+#financePanel{padding:12px}#financePanel .fin{min-height:0;padding:9px;border-radius:9px}
+#financePanel .fin b{font-size:clamp(14px,1.25vw,18px);margin-top:3px}
+#financePanel .finance-grid{gap:7px}#financePanel .breakdown{margin-top:8px}
+#financePanel .breakdown td,#financePanel .breakdown th{padding:5px 3px}
+/* Central de Decisões: tabela compacta, cabeçalho fixo, rolagem vertical e horizontal */
+.decision-scroll{height:clamp(520px,56vh,760px);overflow:auto;border:1px solid #395b71;border-radius:12px;
+  scrollbar-color:#4c7991 #102436;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.decision-table{border-collapse:separate;border-spacing:0;width:100%;min-width:760px;text-align:left;font-size:12px}
+.decision-table th{position:sticky;top:0;z-index:3;background:#163347;color:#bad3e3;font-size:10px;
+  text-transform:uppercase;letter-spacing:.06em;padding:10px;border-bottom:1px solid #476c81}
+.decision-table th:first-child{left:0;z-index:5}
+.decision-table td{padding:9px 10px;border-bottom:1px solid #2a4659;vertical-align:middle;background:#102539}
+.decision-row:nth-child(even) td{background:#132a3e}.decision-table tr:last-child td{border-bottom:0}
+.decision-table .decision-name{position:sticky;left:0;z-index:2;min-width:210px;width:29%;box-shadow:2px 0 4px #07132266}
+.decision-name-inner{display:flex;align-items:center;gap:8px}.decision-icon{font-size:19px;flex:none}
+.decision-name strong{display:block;font-size:11px;line-height:1.35}
+.decision-name small{display:block;font-size:10px;color:#a8cad5;line-height:1.35;margin-top:3px}
+.decision-benefit{color:#c1d3df;min-width:240px;line-height:1.45;font-size:11px}
+.decision-cost{color:#f5d08a;font-weight:750;white-space:nowrap;font-size:11px;min-width:120px}
+.decision-controls{min-width:196px;width:220px}.decision-controlstack{display:grid;gap:6px}
+.decision-controlstack button{width:100%;min-height:34px;font-size:11px;padding:6px 8px;border-radius:8px}
+.decision-controlstack .sector-open{background:#20475a;border:1px solid #5e97a7;color:#dbf9ff}
+.decision-controlstack select{font-size:12px;padding:7px;width:100%;min-height:34px}
+.decision-group-row td{background:#1d4051!important;color:#baf7de;font-weight:850;font-size:11px;letter-spacing:.04em;
+  padding:8px 12px;border-bottom:1px solid #417187}
+.decision-help{color:var(--muted);margin:8px 0 0;font-size:10px}
+.decision-row:target td{background:#214b53!important}
+.decision-row.decision-focus td{animation:focus-row 2.3s ease}
+@keyframes focus-row{0%,50%{background:#276354}100%{background:#102539}}
+/* Dicas contextuais, no canto inferior, separadas das notícias no topo */
+.tip-zone{position:fixed;right:16px;bottom:16px;z-index:65;pointer-events:none;width:min(340px,calc(100vw - 24px))}
+.tip-card{pointer-events:auto;position:relative;background:linear-gradient(145deg,#143949,#0c2131);color:#eaf6fc;
+  border:1px solid #5a96aa;border-left:4px solid #f6c96e;border-radius:14px;padding:13px 14px;
+  box-shadow:0 18px 48px #000b;animation:tip-in .24s ease-out}
+.tip-card .tip-eyebrow{color:#ffdc97;font-size:10px;font-weight:900;letter-spacing:.07em}
+.tip-card .tip-title{display:block;font-size:13px;font-weight:850;margin:3px 25px 5px 0}
+.tip-card p{margin:0 0 9px;font-size:11px;line-height:1.5;color:#cfdfeb}
+.tip-card .tip-link{background:#275e64;color:#eafffa;border:1px solid #6faea9;font-size:11px;padding:7px 9px;min-height:33px}
+.tip-card .tip-close{position:absolute;right:8px;top:9px;padding:3px 7px;min-height:25px;background:#254253;border:0}
+@keyframes tip-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1060px){.dashboard{grid-template-columns:1fr}.column.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.scene{height:295px}}
+@media(max-width:670px){.app{padding:9px}.top{margin-bottom:9px}.header-actions button{min-height:42px}
+ .stat{padding:9px 10px}.stat-value{font-size:19px}.business-intelligence{padding:10px}
+ .business-intelligence .indicators>div{padding:8px 9px}.scene{height:clamp(190px,58vw,250px)}
+ .column.side{display:flex}.decision-scroll{height:min(430px,58vh)}
+ .decision-table{min-width:640px}.decision-table .decision-name{min-width:147px}
+ .tip-zone{bottom:10px;right:10px}.tip-card{padding:11px 12px}}
+@media(prefers-reduced-motion:reduce){.tip-card,.decision-row.decision-focus td{animation:none}}
+</style>
+
+<style>
+/* Inteligência de Negócios transferida para a coluna lateral, abaixo de Acontecimentos */
+.column.side .business-intelligence{margin:0;background:linear-gradient(150deg,#143b4b,#102236 88%);border-color:#4c8795;}
+.column.side .business-intelligence .panel-header{margin-bottom:11px;flex-wrap:wrap}
+.column.side .business-intelligence .panel-header p{max-width:340px}
+.column.side .business-intelligence #teamWarning{margin:13px 0 0!important;font-size:11px;line-height:1.55}
+/* Gráfico de colunas (0 a 100): desenhado em CSS puro, sem dependências */
+.intel-graph{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px;width:100%;padding:11px 10px 8px;
+ background:#0b2032;border:1px solid #33536a;border-radius:12px;min-width:0}
+.intel-scale{height:170px;padding:19px 0 0;display:flex;flex-direction:column;justify-content:space-between;text-align:right;
+ font-size:10px;color:#a3c0d0;font-variant-numeric:tabular-nums}
+.intel-content{min-width:0}
+.intel-bars{height:170px;padding-top:19px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;
+ background:repeating-linear-gradient(to bottom,#3c627549 0px,#3c627549 1px,transparent 1px,transparent 38px);
+ border-bottom:1px solid #7895a6;}
+.intel-column{display:flex;align-items:flex-end;justify-content:center;min-width:0;min-height:0;position:relative}
+.intel-bar{position:relative;height:0;width:min(43px,77%);min-width:12px;border-radius:8px 8px 0 0;
+ transition:height .5s ease-out;box-shadow:inset 0 1px 0 #ffffff8c,0 0 15px #0d3d5547}
+.intel-gold{background:linear-gradient(0deg,#c68932,#ffdea2)}
+.intel-blue{background:linear-gradient(0deg,#357ab6,#9ad6ff)}
+.intel-teal{background:linear-gradient(0deg,#168d9e,#90f0e1)}
+.intel-green{background:linear-gradient(0deg,#278867,#a5f1b8)}
+.intel-value{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);color:#f4f8ff;
+ font-size:10px;font-weight:900;white-space:nowrap;font-variant-numeric:tabular-nums;
+ text-shadow:0 1px 4px #020c16}
+.intel-labels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;padding-top:9px}
+.intel-labels>div{min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;color:#d8eaf1;
+ font-size:10px;font-weight:650;text-align:center;overflow-wrap:anywhere;line-height:1.2}
+.intel-labels>div span:first-child{font-size:15px}
+/* Gráfico ocupa o espaço antes vazio, mesmo quando o painel lateral se reorganiza */
+@media(max-width:1060px){.column.side .business-intelligence{grid-column:1/-1}}
+@media(max-width:670px){.intel-graph{padding:9px 7px 7px;grid-template-columns:25px minmax(0,1fr)}
+ .intel-labels>div{font-size:9px}.intel-scale{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.intel-bar{transition:none}}
+</style>
+
+<style>
+/* Abertura cinematográfica original do simulador, sem arquivos externos. */
+.cinema-intro[hidden]{display:none!important}
+.cinema-intro{--cinema-length:3800ms;position:fixed;inset:0;z-index:200;display:grid;place-items:center;
+ isolation:isolate;overflow:hidden;padding:24px;color:#effcff;background:#030a14;
+ min-height:100vh;min-height:100dvh;font-family:inherit}
+body.cinema-running{overflow:hidden}
+.cinema-intro::before{content:"";position:absolute;inset:-18%;z-index:-5;background:
+ radial-gradient(ellipse 57% 44% at 52% 62%,#0e756577 0,transparent 78%),
+ radial-gradient(ellipse 48% 50% at 76% 42%,#0c3a646e 0,transparent 76%),
+ radial-gradient(ellipse 36% 45% at 20% 40%,#7e63283b 0,transparent 80%),
+ linear-gradient(147deg,#030913 5%,#091e30 50%,#06111f 95%)}
+.cinema-intro::after{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;
+ background:linear-gradient(180deg,#020713ae 0%,transparent 28%,transparent 72%,#020813d9 100%),
+ repeating-linear-gradient(0deg,#b6ffec09 0px,#b6ffec09 1px,transparent 1px,transparent 6px);opacity:.7}
+.cinema-beams{position:absolute;inset:-40%;z-index:-2;pointer-events:none;transform:rotate(-25deg);
+ background:repeating-linear-gradient(90deg,transparent 0%,transparent 12%,#6cf3d10c 14%,transparent 17%,transparent 31%);opacity:.62}
+.cinema-intro.is-playing .cinema-beams{animation:cinema-beams 5s ease-out both;will-change:transform}
+.cinema-orbit{position:absolute;top:50%;left:50%;z-index:-1;transform:translate(-50%,-52%);
+ width:min(67vw,620px);aspect-ratio:1;border:1px solid #67f3d021;border-radius:50%;box-shadow:0 0 75px #47e2b31c,inset 0 0 75px #75e9bf0c;
+ background:radial-gradient(circle at center,#43eec415,transparent 68%)}
+.cinema-orbit::before,.cinema-orbit::after{content:"";position:absolute;border-radius:50%;inset:12%;border:1px solid #f9d7822b}
+.cinema-orbit::after{inset:24%;border-color:#68ffdc2e}
+.cinema-intro.is-playing .cinema-orbit{animation:cinema-orbit-in 1.1s ease-out both}
+.cinema-intro.is-playing .cinema-orbit::before{animation:none}
+.cinema-particles{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.cinema-particles span{position:absolute;left:var(--px);top:var(--py);width:3px;height:3px;
+ border-radius:50%;background:#b4f5db;opacity:0;will-change:transform,opacity}
+.cinema-intro.is-playing .cinema-particles span{animation:cinema-spark 4.4s ease-in-out infinite;animation-delay:var(--pd)}
+.cinema-particles span:nth-child(n+11){display:none}
+@media(max-width:670px){.cinema-particles span:nth-child(n+6){display:none}}
+.cinema-skyline{position:absolute;bottom:0;left:0;width:100%;height:49%;z-index:0;pointer-events:none;opacity:.95;overflow:hidden}
+.cinema-skyline svg{width:100%;height:100%;display:block;object-fit:cover}
+.cinema-intro.is-playing .cinema-skyline{animation:cinema-city-rise 1.25s cubic-bezier(.18,.78,.22,1) both}
+.cinema-ground{position:absolute;bottom:0;left:0;right:0;height:24%;pointer-events:none;z-index:0;
+ background:linear-gradient(0deg,#06141d 7%,#10413a2c 60%,transparent),
+ repeating-linear-gradient(90deg,#71e6b51b 0 1px,transparent 1px 92px);mask-image:linear-gradient(0deg,#000,transparent 95%)}
+.cinema-intro__content{position:relative;z-index:5;text-align:center;width:min(850px,100%);padding:32px 12px 48px}
+.cinema-intro__kicker{font-size:clamp(10px,1.15vw,13px);font-weight:850;letter-spacing:.32em;text-transform:uppercase;color:#8bf8d6;
+ text-shadow:0 0 18px #56e8b76e;margin-bottom:18px}
+.cinema-intro.is-playing .cinema-intro__kicker{animation:cinema-reveal .65s .12s both}
+.cinema-insignia{position:relative;display:grid;place-items:center;margin:0 auto 20px;width:94px;height:94px;
+ border-radius:25px;background:linear-gradient(140deg,#226a64,#12324b 70%);border:2px solid #86ffcf99;
+ box-shadow:0 0 0 6px #56e7ac13,0 0 34px #30edbb30,inset 0 1px 5px #ffffff20}
+.cinema-insignia svg{width:65px;height:65px}
+.cinema-intro.is-playing .cinema-insignia{animation:cinema-logo-in .78s .16s cubic-bezier(.22,1,.36,1) both}
+.cinema-intro__title{font-weight:1000;line-height:.95;letter-spacing:-.062em;text-transform:uppercase;margin:0;
+ font-size:clamp(42px,8.8vw,113px)}
+.cinema-intro__title .cinema-title-main{display:block;color:#f4fbff;text-shadow:0 2px 0 #8da9b3,0 10px 40px #000a}
+.cinema-intro__title .cinema-title-sub{display:block;font-size:.43em;letter-spacing:.045em;margin-top:15px;
+ background:linear-gradient(95deg,#ffe3a6 5%,#e7bd6c 42%,#79e9bd 93%);color:transparent;-webkit-background-clip:text;background-clip:text}
+.cinema-intro.is-playing .cinema-title-main{animation:cinema-title-in .85s .40s cubic-bezier(.16,1,.2,1) both}
+.cinema-intro.is-playing .cinema-title-sub{animation:cinema-title-in .85s .7s cubic-bezier(.16,1,.2,1) both}
+.cinema-intro__strap{font-size:clamp(12px,1.6vw,17px);font-weight:650;color:#c7e8e7;letter-spacing:.17em;margin:26px 0 12px;text-transform:uppercase}
+.cinema-intro.is-playing .cinema-intro__strap{animation:cinema-reveal .65s 1.15s both}
+.cinema-intro__facts{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:17px auto 0}
+.cinema-intro__facts span{border:1px solid #8aedd174;background:#092a3add;color:#e3ffe9;border-radius:999px;
+ padding:8px 13px;font-size:clamp(11px,1.4vw,13px);font-weight:800}
+.cinema-intro.is-playing .cinema-intro__facts{animation:cinema-reveal .7s 1.55s both}
+.cinema-loading{position:absolute;bottom:max(34px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);
+ width:min(470px,calc(100% - 34px));z-index:12;text-align:center;display:grid;gap:12px}
+.cinema-loading__label{display:flex;justify-content:space-between;gap:10px;font-size:10px;font-weight:850;
+ letter-spacing:.12em;color:#b8d8d9;text-transform:uppercase;margin-bottom:0}
+.cinema-loading__track{height:6px;background:#1b4558;border-radius:50px;overflow:hidden;border:1px solid #80e8d355}
+.cinema-loading__fill{height:100%;width:100%;background:linear-gradient(90deg,#2cb5ad,#80efba,#ffe297);box-shadow:0 0 15px #71fbd1;border-radius:50px;transform-origin:left center}
+.cinema-intro.is-playing .cinema-loading__fill{animation:cinema-pulse 2.2s ease-in-out infinite}
+.cinema-cta{display:flex;flex-direction:column;align-items:center;gap:10px}
+.cinema-start{min-width:min(260px,100%);padding:14px 18px;border-radius:16px;border:1px solid #9ff2d8;background:linear-gradient(135deg,#79edc0,#2aa787);
+ color:#06261c;font-size:15px;font-weight:900;box-shadow:0 14px 40px #0007,0 0 0 1px #ffffff1f inset}
+.cinema-start:hover,.cinema-start:focus-visible{transform:translateY(-2px) scale(1.01);filter:brightness(1.05)}
+.cinema-help{font-size:11px;color:#bdd7dc;max-width:420px;line-height:1.45}
+@keyframes cinema-reveal{from{opacity:0;transform:translateY(17px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cinema-logo-in{from{opacity:0;transform:scale(.35) rotate(-28deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes cinema-logo-pulse{from{box-shadow:0 0 0 7px #56e7ac13,0 0 42px #30edbb30}to{box-shadow:0 0 0 12px #56e7ac0d,0 0 90px #30edbb65}}
+@keyframes cinema-title-in{from{opacity:0;transform:translateY(29px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes cinema-city-rise{from{opacity:0;transform:translateY(80px) scale(1.1)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes cinema-beams{from{transform:rotate(-25deg) translateX(-20%)}to{transform:rotate(-25deg) translateX(15%)}}
+@keyframes cinema-orbit-in{from{opacity:0;transform:translate(-50%,-52%) scale(.65)}to{opacity:1;transform:translate(-50%,-52%) scale(1)}}
+@keyframes cinema-orbit-spin{from{rotate:0deg}to{rotate:360deg}}
+@keyframes cinema-spark{0%,100%{opacity:0;transform:translate(0,15px) scale(.4)}40%{opacity:.85}70%{opacity:.3;transform:translate(15px,-38px) scale(1.7)}}
+@keyframes cinema-load{from{width:0}to{width:100%}}
+@keyframes cinema-pulse{0%,100%{transform:scaleX(.45);opacity:.68}50%{transform:scaleX(1);opacity:1}}
+@media(max-width:600px){.cinema-intro{padding:12px}.cinema-insignia{width:72px;height:72px;border-radius:20px;margin-bottom:17px}
+ .cinema-insignia svg{width:49px;height:49px}.cinema-intro__kicker{letter-spacing:.17em;margin-bottom:14px}
+ .cinema-intro__title{font-size:clamp(38px,10.5vw,65px)}.cinema-intro__title .cinema-title-sub{letter-spacing:.01em;margin-top:10px}
+ .cinema-intro__strap{letter-spacing:.06em;margin-top:23px}.cinema-intro__facts{gap:6px}
+ .cinema-intro__facts span{padding:6px 10px}.cinema-skyline{height:41%}
+ .cinema-loading{bottom:max(19px,env(safe-area-inset-bottom));width:min(360px,calc(100% - 38px))}}
+@media(max-height:480px){.cinema-insignia{width:52px;height:52px;margin-bottom:6px;border-radius:13px}.cinema-insignia svg{width:37px;height:37px}
+ .cinema-intro__content{padding:6px 8px 14px}.cinema-intro__kicker{margin-bottom:6px}
+ .cinema-intro__title{font-size:clamp(35px,7vw,73px)}.cinema-intro__title .cinema-title-sub{margin-top:6px}
+ .cinema-intro__strap{margin:9px 0 2px}.cinema-intro__facts{margin-top:7px}
+ .cinema-skyline{height:36%}.cinema-loading{bottom:10px}}
+@media(prefers-reduced-motion:reduce){.cinema-intro *{animation:none!important;transition:none!important}
+ .cinema-intro .cinema-loading__fill{width:100%}.cinema-intro .cinema-particles span{display:none}}
+
+/* Barra restaurada, curta e sem bloquear a entrada, com transform para usar a GPU. */
+.cinema-loading__track{height:6px;background:#1b4558;border-radius:50px;overflow:hidden;border:1px solid #80e8d355}
+.cinema-loading__fill{height:100%;width:100%;transform:scaleX(0);transform-origin:left;
+ background:linear-gradient(90deg,#2cb5ad,#80efba,#ffe297);border-radius:50px}
+.cinema-intro.is-playing .cinema-loading__fill{animation:cinema-complete 1.45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes cinema-complete{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.cinema-intro.is-playing .cinema-loading__fill{animation:none;transform:scaleX(1)}}
+</style>
+<style>
+/* Abertura: fluxo vertical único evita interseções entre títulos, selos e carregamento. */
+.cinema-intro{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(32px,5.2vh,50px);padding:24px 18px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain}
+.cinema-intro__content{flex:0 0 auto;width:min(940px,100%);padding:0 8px;text-align:center}
+.cinema-insignia{margin-bottom:clamp(15px,2.5vh,25px)}
+.cinema-intro__title{font-size:clamp(40px,7.7vw,105px);line-height:1.06;overflow-wrap:normal}
+.cinema-intro__title .cinema-title-main{line-height:1.07}
+.cinema-intro__title .cinema-title-sub{margin-top:clamp(10px,2vh,20px);line-height:1.17}
+.cinema-intro__strap{margin:clamp(15px,2.8vh,25px) 0 clamp(12px,2vh,18px);line-height:1.4;letter-spacing:.12em}
+.cinema-intro__facts{margin:0;gap:12px;align-items:center;justify-content:center}
+.cinema-intro__facts span{padding:9px 15px;line-height:1.35;white-space:nowrap}
+.cinema-loading{position:relative;bottom:auto!important;left:auto;transform:none;display:flex;flex-direction:column;align-items:stretch;flex:0 0 auto;width:min(485px,100%);margin:0;gap:13px;z-index:12}
+.cinema-loading__label{justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;font-size:10px;line-height:1.5;margin:0}
+.cinema-loading__track{height:7px;flex:0 0 auto}
+.cinema-cta{gap:12px;margin-top:5px}.cinema-start{align-self:center;width:min(325px,100%)}
+.cinema-help{line-height:1.55;font-size:12px;margin:auto}
+@media(max-width:700px){.cinema-intro{gap:31px;padding:20px 12px}.cinema-intro__kicker{letter-spacing:.12em;line-height:1.4}
+ .cinema-intro__title{font-size:clamp(36px,10vw,66px)}.cinema-intro__facts{gap:8px}.cinema-intro__facts span{padding:7px 11px;font-size:11px}
+ .cinema-loading{width:min(450px,100%)}.cinema-start{width:min(320px,100%)}}
+@media(max-height:630px){.cinema-intro{justify-content:flex-start;gap:28px;padding-top:12px;padding-bottom:18px}
+ .cinema-insignia{width:56px;height:56px;border-radius:14px;margin-bottom:10px}.cinema-insignia svg{width:39px;height:39px}
+ .cinema-intro__kicker{margin-bottom:8px}.cinema-intro__title{font-size:clamp(32px,6.9vw,72px)}
+ .cinema-intro__strap{margin:10px 0}.cinema-intro__facts{gap:6px}
+ .cinema-loading{bottom:auto}.cinema-help{font-size:11px}}
+/* Decisões: cartões com dimensões próximas de quadrados, em painel de largura completa abaixo do dashboard. */
+.decisions-panel{margin-top:clamp(26px,4vh,48px);padding:clamp(16px,2vw,25px);scroll-margin-top:12px}
+.dashboard .column > .decisions-panel{margin-top:0;flex:1}
+.decisions-header{margin-bottom:17px}.decisions-header h2{font-size:clamp(17px,1.7vw,22px)}
+.decisions-header p{font-size:12px;line-height:1.5}
+.decision-scroll{height:auto;max-height:760px;overflow-y:auto;overflow-x:hidden;padding:5px 8px 18px 3px;border:0;background:transparent;border-radius:0;scrollbar-gutter:stable;overscroll-behavior:contain}
+.decision-group{margin-bottom:22px}.decision-group:last-child{margin-bottom:0}
+.decision-group h3{margin:0 0 12px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;font-weight:850;color:#a8eed8;line-height:1.5}
+.decision-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.decision-card{min-width:0;min-height:230px;display:flex;flex-direction:column;gap:9px;padding:16px;background:linear-gradient(145deg,#18364a,#0f2235);border:1px solid #3b6176;border-radius:16px;box-shadow:0 9px 23px #01091429;transition:border-color .2s,transform .2s}
+.decision-card:hover{border-color:#7cbaae;transform:translateY(-2px)}
+.decision-card__head{display:flex;align-items:center;gap:10px;min-height:46px}
+.decision-card__icon{flex:none;width:44px;height:44px;display:grid;place-items:center;background:#214a5b;border:1px solid #4d8290;border-radius:13px;font-size:23px}
+.decision-card__head strong{min-width:0;flex:1;font-size:14px;line-height:1.27;color:#f0f8fc;overflow-wrap:anywhere;word-break:break-word}
+.decision-card__meta{font-size:11px;color:#9dbecc;line-height:1.4;min-height:0}
+.decision-card__description{color:#c5d9e3;font-size:12px;line-height:1.52;margin:0;flex:1}
+.decision-card__footer{display:flex;flex-direction:column;gap:9px;margin-top:auto}
+.decision-card__price{font-size:12px;font-weight:800;color:#f5d18c}
+.decision-card__buttons{display:grid;gap:7px}
+.decision-card__buttons button,.decision-card__buttons select{width:100%;min-height:40px;font-size:12px;padding:8px 10px}
+.decision-card__buttons .sector-open{background:#235167;border:1px solid #4e8998;color:#e0f6ff}
+.decision-card__buttons select{color:#f0f8fc;background:#10283b;border:1px solid #4a6d82;border-radius:9px}
+.decision-card.decision-focus{animation:card-attention 2s ease}
+@keyframes card-attention{0%,55%{border-color:#ffd580;box-shadow:0 0 0 3px #f5ca7044}100%{border-color:#3b6176}}
+.decisions-panel .decision-help{font-size:11px;margin:12px 0 0;color:#acc7d5}
+@media(max-width:1180px){.decision-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.decision-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.decision-scroll{max-height:min(760px,76vh)}.decision-card{min-height:228px;padding:13px}}
+@media(max-width:470px){.decision-cards{grid-template-columns:1fr}.decision-card{min-height:188px;padding:14px}.decisions-header{align-items:flex-start;gap:8px}.decisions-panel{margin-top:25px;padding:13px}.decision-scroll{max-height:72vh;padding-right:4px}}
+@media(prefers-reduced-motion:reduce){.decision-card,.decision-card.decision-focus{animation:none;transition:none}}
+/* Alinha a borda inferior da Central com a borda inferior do gráfico lateral. */
+@media(min-width:1061px){
+ .dashboard > .column:first-child > .decisions-panel{
+  display:flex;flex-direction:column;flex:0 0 auto;min-height:330px;overflow:hidden;
+ }
+ .dashboard > .column:first-child > .decisions-panel > .decision-scroll{
+  flex:1 1 auto;min-height:0;max-height:none;overflow-y:auto;overflow-x:hidden;
+ }
+}
+</style>
+<style>
+/* Ajustes finais de desempenho: movimento em transform/opacity, sem filtros animados. */
+.cinema-skyline,.cinema-beams,.cinema-orbit{contain:layout style paint}
+.cinema-intro.is-playing .cinema-title-main,.cinema-intro.is-playing .cinema-title-sub{will-change:transform,opacity}
+.cinema-intro.is-playing .cinema-skyline{will-change:transform,opacity}
+.cinema-intro.is-playing .cinema-orbit{will-change:transform,opacity}
+</style>
+
+<style>
+/* Controles de áudio independentes, sem bibliotecas ou arquivos externos. */
+.audio-controls{position:relative;z-index:30;flex:0 0 auto}
+.audio-toggle{white-space:nowrap;min-width:80px}
+.audio-popover{position:absolute;top:calc(100% + 9px);right:0;width:min(285px,calc(100vw - 22px));padding:15px;
+ background:linear-gradient(155deg,#17384b,#0c1d30);border:1px solid #548698;border-radius:15px;
+ box-shadow:0 14px 36px #000a;display:grid;gap:12px;color:#edf6fb}
+.audio-popover[hidden]{display:none!important}
+.audio-popover>strong{font-size:13px}
+.audio-popover{max-height:min(520px,80dvh);overflow-y:auto;scrollbar-color:#497785 #122b39}
+.audio-setting{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:12px}
+.audio-setting input{accent-color:var(--green);width:18px;height:18px;flex:none}
+.audio-volume-label{display:flex;justify-content:space-between;font-size:12px;color:#cae0e9}
+.audio-popover input[type=range]{width:100%;accent-color:var(--green);cursor:pointer;min-height:24px}
+.audio-popover p{font-size:10px;line-height:1.5;color:#a9c5d1;margin:0}
+@media(max-width:670px){
+ .header-actions .audio-controls{flex:0 0 auto}
+ .audio-popover{position:fixed;left:12px;right:12px;top:auto;bottom:max(12px,env(safe-area-inset-bottom));
+  width:auto;max-height:min(350px,80dvh);overflow-y:auto}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="identity"><div class="logo" aria-hidden="true">🏙️</div><div><div class="kicker">Feira de Profissões • Ciências de Dados</div><h1>Empresário por 5 Minutos</h1><p class="subtitle">Transforme R$ 100 mil em um negócio sustentável. Suas decisões mudam a cidade.</p></div></div><div class="header-actions"><span class="pill">📅 <strong id="yearText">Ano 1</strong></span><span class="pill">⏱️ <strong id="timeText">05:00</strong></span><button id="chartsBtn" class="secondary small" type="button">📊 Inteligência de negócios</button><div class="audio-controls" id="audioControls">
+ <button id="audioToggle" class="secondary small audio-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="audioPopover" title="Configurar música e efeitos">🔊 Som</button>
+ <div class="audio-popover" id="audioPopover" hidden role="group" aria-label="Configurações de som">
+  <strong>🎧 Áudio do jogo</strong>
+  <label class="audio-setting"><input id="musicEnabled" type="checkbox" checked> Música de fundo</label>
+  <label class="audio-setting"><input id="effectsEnabled" type="checkbox" checked> Efeitos sonoros</label>
+  <label class="audio-volume-label" for="audioVolume">Volume geral <span id="audioVolumeValue">80%</span></label>
+  <input id="audioVolume" type="range" min="0" max="100" value="80" step="5" aria-label="Volume geral">
+  <label class="audio-volume-label" for="musicVolume">Música <span id="musicVolumeValue">79%</span></label>
+  <input id="musicVolume" type="range" min="0" max="100" value="79" step="1" aria-label="Volume da música">
+  <label class="audio-volume-label" for="effectsVolume">Efeitos <span id="effectsVolumeValue">92%</span></label>
+  <input id="effectsVolume" type="range" min="0" max="100" value="92" step="1" aria-label="Volume dos efeitos">
+  <p>Trilha eletrônica com batida e efeitos reforçados. Ajuste os três volumes se desejar. O som inicia após um toque ou clique.</p>
+ </div>
+</div><button id="pauseBtn" class="primary small" type="button">▶ Iniciar</button><button id="restartBtn" class="primary small" type="button">↻ Reiniciar</button></div></header>
+<section class="stats" aria-label="Indicadores gerais"><div class="stat"><div class="stat-label">💰 CAIXA DISPONÍVEL</div><div class="stat-value" id="cash">R$ 100.000</div><div class="stat-detail" id="cashDelta">Capital inicial</div></div><div class="stat"><div class="stat-label">📈 RESULTADO DO MÊS</div><div class="stat-value" id="profit">R$ 0</div><div class="stat-detail" id="monthText">Mês 0 de 48</div></div><div class="stat"><div class="stat-label">👥 FUNCIONÁRIOS</div><div class="stat-value" id="employees">0</div><div class="stat-detail" id="staffDetail">Folha: R$ 0/mês</div></div><div class="stat"><div class="stat-label">🏢 UNIDADES ATIVAS</div><div class="stat-value" id="businessCount">0</div><div class="stat-detail" id="capacityDetail">Capacidade da equipe: 100%</div></div></section>
+
+<main class="dashboard"><div class="column"><section class="panel"><div class="panel-header"><div><h2>🏙️ Meu império empresarial</h2><p>Acompanhe sua cidade, o clima e a evolução dos empreendimentos.</p></div><span class="tag" id="phaseLabel">ANO 1 • MÊS 1</span></div><div class="scene morning" id="city" role="img" aria-label="Cidade animada com lojas, fábrica, tecnologia, fazenda e vegetação"><div class="sky"></div><div class="ambient-dusk" id="ambientDusk"></div><div class="stars"></div><div class="sunmoon" aria-hidden="true"><svg class="moon-art" viewBox="0 0 70 70"><defs><radialGradient id="moonShade" cx="34%" cy="29%" r="74%"><stop offset="0" stop-color="#fffbed"/><stop offset=".68" stop-color="#e7e9d8"/><stop offset="1" stop-color="#aebdd0"/></radialGradient></defs><circle cx="35" cy="35" r="29" fill="url(#moonShade)" stroke="#fcf7d8" stroke-width="1.5"/><g fill="#b8c3cb" opacity=".55"><circle cx="22" cy="22" r="7"/><circle cx="45" cy="25" r="4"/><circle cx="40" cy="48" r="9"/><circle cx="19" cy="45" r="3"/></g><g stroke="#f8f9e7" opacity=".48" fill="none"><circle cx="22" cy="22" r="8"/><circle cx="40" cy="48" r="10"/></g></svg></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="hills back"></div><div class="hills"></div><div class="ground"></div><div class="walkway"></div><div class="ambient-tag" id="dayLabel">☀️ Manhã • 06h</div><div class="scene-objects" id="sceneObjects"></div><div class="bush b1"></div><div class="bush b2"></div><div class="bush b3"></div><div class="city-empty" id="emptyHint">✨ Sua cidade está pronta. Abra seu primeiro negócio!</div><div class="street"></div></div><div class="scene-footer"><span>📍 Distrito empresarial & área rural</span><span id="cityStatus">0 unidades construídas</span></div><div class="progress" aria-label="Progresso da partida"><div id="timeBar"></div></div><div class="legend"><span id="weatherLabel">🌤️ Tempo estável</span><span id="progressLabel">0 / 48 meses</span><span>48 meses em 5 minutos</span></div></section>
+<section class="panel decisions-panel" id="decisionsPanel" aria-labelledby="decisionsTitle">
+ <div class="panel-header decisions-header"><div><h2 id="decisionsTitle">🧠 Central de decisões</h2><p>Escolha sua próxima estratégia. Cada cartão mostra custos e consequências.</p></div><span class="tag" id="fundsTag">R$ 100.000</span></div>
+ <div class="decision-scroll" id="decisionScroll" tabindex="0" aria-label="Central de decisões em cartões, com rolagem vertical">
+  <section class="decision-group" aria-labelledby="businessTitle"><h3 id="businessTitle">🏢 Investir e diversificar</h3><div class="decision-cards" id="businessActions"></div></section>
+  <section class="decision-group" aria-labelledby="peopleTitle"><h3 id="peopleTitle">👥 Gestão de pessoas</h3><div class="decision-cards" id="peopleActions"></div></section>
+  <section class="decision-group" aria-labelledby="growthTitle"><h3 id="growthTitle">⚙️ Crescimento e eficiência</h3><div class="decision-cards" id="growthActions"></div></section>
+ </div>
+ <p class="decision-help">↕ Role dentro da central para ver todas as opções.</p>
+</section>
+</div>
+<aside class="column side">
+<section class="panel" id="financePanel"><div class="panel-header"><div><h2>💹 Balanço mensal</h2><p>Receita, operação, salários e tributos reais do último fechamento.</p></div></div><div class="finance-grid fin-six"><div class="fin"><span>📈 Receita bruta</span><b id="revenue">R$ 0</b></div><div class="fin"><span>🧾 Impostos</span><b id="taxes">R$ 0</b></div><div class="fin"><span>📉 Despesas</span><b id="expenses">R$ 0</b></div><div class="fin"><span>💚 Lucro líquido do mês</span><b id="netProfit">R$ 0</b></div><div class="fin"><span>🏢 Valor da empresa</span><b id="valuation">R$ 100.000</b></div><div class="fin"><span>💰 Caixa disponível</span><b id="financeCash">R$ 100.000</b></div></div><table class="breakdown"><thead><tr><th>Setor</th><th>Receita</th><th>Operação</th></tr></thead><tbody id="sectorRows"></tbody><tfoot><tr><td>Salários</td><td colspan="2" id="salaryRow">R$ 0</td></tr></tfoot></table><p class="notice" id="farmNote" style="margin:9px 0 0">🌾 Clima influencia a produção agrícola.</p></section>
+<section class="panel"><div class="panel-header"><div><h2>📰 Acontecimentos</h2><p>Registro de decisões, resultados e surpresas do mercado.</p></div><span class="tag">AO VIVO</span></div><div class="log" id="log" role="log" aria-live="polite"></div></section>
+<section class="panel business-intelligence" id="businessIntelligence" aria-label="Inteligência de negócios"><div class="panel-header"><div><h2>📊 Inteligência de negócios</h2><p>Compare os indicadores de gestão em colunas, na escala de 0 a 100.</p></div><span class="tag">DADOS EM TEMPO REAL</span></div><div class="intel-graph" id="indicatorList" role="group" aria-label="Gráfico de colunas: reputação, produtividade, demanda e sustentabilidade"></div><p class="section-note" style="margin:14px 0 0" id="teamWarning">Abra um negócio para começar a produzir.</p></section>
+</aside></main>
+<footer class="foot">Simulação fictícia para fins educacionais • HTML, CSS e JavaScript • Funciona sem internet • Os indicadores permitem discutir dados e decisões</footer></div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="endTitle"><div class="modal"><div class="kicker">Relatório final • 4 anos de decisões</div><h2 id="endTitle">Sua jornada terminou!</h2><div class="score" id="endScore">0 / 100 pontos</div><p id="endSummary"></p><div class="finance-grid" id="endDetails"></div><div id="revenueRanking" class="revenue-rank" aria-label="Todas as classificações de receita"></div><div id="endSectorDetails"></div><p class="section-note">A pontuação considera caixa, reputação, produtividade, sustentabilidade, capacidade operacional e diversificação. Custos e receitas são fictícios, simplificados para uso educativo.</p><div class="modal-actions"><button class="primary" id="playAgain">↻ Jogar novamente</button><button class="outline" id="viewCity">🏙️ Ver cidade</button></div></div></div>
+<div class="overlay" id="sectorOverlay" role="dialog" aria-modal="true" aria-labelledby="sectorTitle"><div class="modal sector-modal"><div class="kicker">PAINEL DE SETOR • INTELIGÊNCIA DE NEGÓCIOS</div><div class="sector-head"><div class="sector-symbol" id="sectorIcon">🏪</div><div><h2 id="sectorTitle">Setor</h2></div></div><div class="sector-kpis" id="sectorKpis"></div><div class="sector-sale"><h3>🏷️ Vender empresa ou unidade</h3><p>Venda uma unidade por vez pelo valor de mercado. O valor da venda entra no caixa, os ativos saem do patrimônio e a receita operacional futura diminui. A equipe permanece contratada até você decidir demitir ou realocar.</p><div class="sale-row"><span>Valor por unidade:</span><strong class="sale-quote" id="saleQuote">R$ 0</strong><button id="sellSector" type="button">Vender 1 unidade</button></div><small id="saleHint" class="notice"></small></div><div class="modal-actions"><button class="primary" id="closeSector">Fechar painel</button></div></div></div>
+
+<div class="toast-zone" id="toastZone" aria-live="polite" aria-atomic="false"></div>
+<div class="final-alert" id="finalAlert" hidden aria-label="Contagem regressiva da partida"><div class="final-alert-card"><span class="eyebrow">⏰ RETA FINAL</span><output class="final-alert-number" id="finalCountdown" aria-label="Segundos restantes">30</output><span class="final-alert-unit">segundos restantes</span></div></div>
+<div class="tip-zone" id="tipZone" aria-live="polite"></div>
+<div class="guide-overlay" id="guideOverlay" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+ <section class="guide-card">
+  <div class="kicker">Feira de Profissões • Ciências de Dados</div>
+  <h2 id="guideTitle">📘 Manual do Empresário por 5 Minutos</h2>
+  <p class="intro">Você receberá <strong>R$ 100.000</strong> para administrar negócios ao longo de <strong>48 meses simulados em 5 minutos</strong>. O desafio é equilibrar crescimento, despesas, pessoas e sustentabilidade.</p>
+  <div class="guide-grid">
+   <div class="guide-step"><strong>🏪 1. Construa seu negócio</strong><p>Abra lojas, fábricas, empresas de tecnologia e fazendas. Cada setor tem investimentos, riscos e receitas próprios.</p></div>
+   <div class="guide-step"><strong>👥 2. Gerencie a equipe</strong><p>Contrate para aumentar a capacidade de produção. Demitir reduz salários futuros, mas gera indenização e pode prejudicar a reputação.</p></div>
+   <div class="guide-step"><strong>📊 3. Analise os indicadores</strong><p>Observe caixa, lucro e Inteligência de negócios. Clique nos edifícios para ver receita, impostos, despesas, lucro e vender unidades.</p></div>
+   <div class="guide-step"><strong>⏱️ 4. Administre o tempo</strong><p>Depois de entrar, clique em <b>Iniciar</b> para rodar o relógio. Você poderá pausar e continuar. As compras têm intervalo de 1,5 segundo; contratar e demitir não.</p></div>
+   <div class="guide-step"><strong>🌦️ 5. Reaja ao mercado</strong><p>Eventos, clima e manutenção afetam o desempenho. Notícias aparecem na tela e ficam registradas em Acontecimentos.</p></div>
+   <div class="guide-step"><strong>🏆 6. Confira o resultado</strong><p>Ao final, compare patrimônio, caixa, lucro e sustentabilidade no relatório da sua empresa.</p></div>
+  </div>
+  <label class="guide-check"><input type="checkbox" id="guideAccepted"><span><strong>Li o manual de instruções</strong> e estou preparado(a) para administrar minha empresa.</span></label>
+  <button id="guideEnter" type="button" class="primary guide-start" disabled>✓ Entrar no jogo</button>
+ </section>
+</div>
+
+
+<!-- Abertura cinematográfica antes do manual. O relógio só começa com o botão Iniciar do jogo. -->
+<div class="cinema-intro" id="cinemaIntro" role="dialog" aria-modal="true" aria-labelledby="cinemaTitle" hidden>
+ <div class="cinema-beams" aria-hidden="true"></div><div class="cinema-orbit" aria-hidden="true"></div>
+ <div class="cinema-particles" aria-hidden="true"><span style="--px:15%;--py:12%;--pd:-0.0s"></span><span style="--px:62%;--py:41%;--pd:-2.3s"></span><span style="--px:14%;--py:70%;--pd:-1.8s"></span><span style="--px:61%;--py:24%;--pd:-1.3s"></span><span style="--px:13%;--py:53%;--pd:-0.8s"></span><span style="--px:60%;--py:7%;--pd:-0.3s"></span><span style="--px:12%;--py:36%;--pd:-2.6s"></span><span style="--px:59%;--py:65%;--pd:-2.1s"></span><span style="--px:11%;--py:19%;--pd:-1.6s"></span><span style="--px:58%;--py:48%;--pd:-1.1s"></span><span style="--px:10%;--py:77%;--pd:-0.6s"></span><span style="--px:57%;--py:31%;--pd:-0.1s"></span><span style="--px:9%;--py:60%;--pd:-2.4s"></span><span style="--px:56%;--py:14%;--pd:-1.9s"></span><span style="--px:8%;--py:43%;--pd:-1.4s"></span><span style="--px:55%;--py:72%;--pd:-0.9s"></span><span style="--px:7%;--py:26%;--pd:-0.4s"></span><span style="--px:54%;--py:55%;--pd:-2.7s"></span><span style="--px:6%;--py:9%;--pd:-2.2s"></span><span style="--px:53%;--py:38%;--pd:-1.7s"></span><span style="--px:5%;--py:67%;--pd:-1.2s"></span><span style="--px:52%;--py:21%;--pd:-0.7s"></span></div>
+ <div class="cinema-skyline" aria-hidden="true">
+  <svg viewBox="0 0 1280 330" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+   <defs><linearGradient id="cinemaBuildings" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1c5e61"/><stop offset="1" stop-color="#071521"/></linearGradient>
+   <linearGradient id="cinemaFront" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#21445b"/><stop offset="1" stop-color="#030d18"/></linearGradient>
+   <pattern id="cinemaWindows" width="25" height="27" patternUnits="userSpaceOnUse"><rect x="6" y="6" width="6" height="9" rx="1" fill="#8be6d0" opacity=".44"/><rect x="17" y="6" width="4" height="9" rx="1" fill="#ffd98d" opacity=".40"/></pattern></defs>
+   <path d="M0 270H70V175H138V238H191V100H257V185H316V145H380V238H430V87H491V202H539V55H589V185H635V124H700V232H745V100H820V220H859V63H925V196H991V137H1050V250H1103V94H1168V175H1230V240H1280V330H0Z" fill="url(#cinemaBuildings)" stroke="#54cfbb" stroke-opacity=".35" stroke-width="2"/>
+   <path d="M0 270H70V175H138V238H191V100H257V185H316V145H380V238H430V87H491V202H539V55H589V185H635V124H700V232H745V100H820V220H859V63H925V196H991V137H1050V250H1103V94H1168V175H1230V240H1280V330H0Z" fill="url(#cinemaWindows)" opacity=".6"/>
+   <path d="M0 320V238H60V288H120V200H180V292H248V167H316V252H377V215H450V310H520V226H589V280H649V195H721V299H796V177H868V301H932V213H997V320H1060V193H1136V292H1190V228H1280V330H0Z" fill="url(#cinemaFront)" stroke="#7de9cb" stroke-opacity=".20" stroke-width="2"/>
+   <path d="M0 327H1280" stroke="#7dedc9" stroke-opacity=".5" stroke-width="5"/>
+  </svg>
+ </div>
+ <div class="cinema-ground" aria-hidden="true"></div>
+ 
+ <div class="cinema-intro__content">
+  <div class="cinema-intro__kicker">Feira de profissões · Ciências de Dados</div>
+  <div class="cinema-insignia" aria-hidden="true"><svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 54V38L23 29V54M30 54V20L42 13V54M49 54V32L61 24V54" stroke="#beffdf" stroke-width="5" stroke-linejoin="round"/><path d="M7 59H64" stroke="#ffdb8f" stroke-width="4" stroke-linecap="round"/><path d="M9 28L24 20L33 25L57 8" stroke="#ffdb8f" stroke-width="3" stroke-linecap="round"/><path d="M48 8H57V17" stroke="#ffdb8f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <h2 id="cinemaTitle" class="cinema-intro__title"><span class="cinema-title-main">EMPRESÁRIO</span><span class="cinema-title-sub">POR 5 MINUTOS</span></h2>
+  <p class="cinema-intro__strap">Seu império começa agora</p>
+  <div class="cinema-intro__facts"><span>💰 R$ 100.000 iniciais</span><span>🏙️ 4 setores</span><span>⏱️ 48 meses simulados</span></div>
+ </div>
+ <div class="cinema-loading" aria-label="Abertura do jogo">
+  <div class="cinema-loading__label"><span>Preparando sua cidade</span><span>Simulação econômica</span></div>
+  <div class="cinema-loading__track" aria-label="Preparação visual da cidade"><div class="cinema-loading__fill"></div></div>
+    <div class="cinema-cta">
+   <button class="cinema-start" id="cinemaStart" type="button">▶ Iniciar</button>
+   <div class="cinema-help">Veja a abertura e toque em <strong>Iniciar</strong> para abrir o manual. Depois, marque que leu as instruções para entrar no painel do jogo.</div>
+  </div>
+ </div>
+</div>
+<script>
+'use strict';
+/* Empresário por 5 Minutos. Uma partida de 300 s equivale a 48 meses. */
+const GAME_SECONDS=300, TOTAL_MONTHS=48, SALARY=950, TERMINATION=1900, MAX_UNITS=12;
+const SECTORS={shop:{label:'Comércio',short:'Loja',icon:'🛍️',cost:25000,baseRevenue:7600,operation:2400,staff:2,asset:18000,description:'Vendas frequentes e clientes sensíveis à reputação.'},factory:{label:'Indústria',short:'Fábrica',icon:'🏭',cost:45000,baseRevenue:15800,operation:6800,staff:4,asset:36000,description:'Escala alta, manutenção e impacto ambiental.'},tech:{label:'Tecnologia',short:'Tech',icon:'💻',cost:35000,baseRevenue:10500,operation:3200,staff:3,asset:27000,description:'Inovação com alta dependência de produtividade.'},farm:{label:'Agronegócio',short:'Fazenda',icon:'🌾',cost:30000,baseRevenue:11200,operation:3900,staff:3,asset:24000,description:'Safras, clima e insumos alteram resultados.'}};
+const ACTIONS=[{id:'shop',title:'Abrir loja comercial',description:SECTORS.shop.description,cost:25000,button:'Abrir loja',icon:'🛍️'},{id:'factory',title:'Construir fábrica',description:SECTORS.factory.description,cost:45000,button:'Construir',icon:'🏭'},{id:'tech',title:'Fundar empresa de tecnologia',description:SECTORS.tech.description,cost:35000,button:'Fundar',icon:'💻'},{id:'farm',title:'Implantar fazenda',description:SECTORS.farm.description,cost:30000,button:'Comprar fazenda',icon:'🌾'}];
+const UPGRADES=[{id:'marketing',title:'Campanha de marketing',description:'Eleva a procura e a reputação.',cost:6000,button:'Divulgar',icon:'📣'},{id:'machines',title:'Comprar máquinas',description:'Mais eficiência nas unidades produtivas.',cost:12000,button:'Modernizar',icon:'⚙️'},{id:'training',title:'Treinar equipe',description:'Aprimora as habilidades e a reputação.',cost:4000,button:'Treinar',icon:'🎓'},{id:'farmUpgrade',title:'Melhorar produção agrícola',description:'Irrigação e técnicas de cultivo elevam a safra e protegem contra a seca.',cost:9000,button:'Melhorar fazenda',icon:'🚜'},{id:'care',title:'Manutenção e sustentabilidade',description:'Previne falhas, reduz desperdícios e fortalece a gestão ambiental.',cost:6500,button:'Cuidar da empresa',icon:'🛠️'}];
+const $=id=>document.getElementById(id);
+const money=value=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0}).format(Math.round(value));
+const clamp=(v,min=0,max=100)=>Math.min(max,Math.max(min,v));
+const round=Math.round;
+const fresh=()=>({cash:100000,elapsed:0,month:0,started:false,paused:false,finished:false,units:{shop:0,factory:0,tech:0,farm:0},employees:0,rep:50,prod:50,demand:50,sustain:70,machines:0,training:0,maintenance:0,farmUpgrade:0,eco:0,investment:0,totalProfit:0,totalRevenue:0,totalExpenses:0,totalTaxes:0,lastRevenue:0,lastExpenses:0,lastTaxes:0,lastProfit:0,events:0,hireCount:0,fireCount:0,indemnities:0,salesProceeds:0,soldUnits:0,weather:'Estável',weatherFactor:1,harvestFactor:1,history:[],sectorTotals:Object.fromEntries(Object.keys(SECTORS).map(k=>[k,{revenue:0,expenses:0}])),sectorLast:Object.fromEntries(Object.keys(SECTORS).map(k=>[k,{revenue:0,expenses:0}])),logs:[]});
+let s=fresh(), clockId=0, previousFrame=0, runningSince=0;
+let finalThirtyAlertShown=false, lastCountdownValue=null;
+let guideReady=false, purchaseCooldownUntil=0, lastCooldownSecond=-1;
+const PURCHASE_WAIT_MS=1500;
+// Trilha ambiente autoral e efeitos sintetizados: um arquivo HTML, sem downloads.
+// Contexto de áudio só é criado após gesto do jogador (política de autoplay dos navegadores).
+const GameAudio=(()=>{
+ // Trilha e efeitos originais, sintetizados em tempo real com Web Audio.
+ // Um compressor controla os picos para permitir volume maior sem saturação.
+ const AudioClass=window.AudioContext||window.webkitAudioContext;
+ const BEAT=60/108, STEP=BEAT/2;
+ let ctx=null,master=null,musicBus=null,fxBus=null,limiter=null,noiseBuffer=null;
+ let timer=0,nextStep=0,position=0,musicOn=true,effectsOn=true;
+ let volume=.80,musicLevel=.79,effectsLevel=.92,tracksAllowed=false;
+ const hz=midi=>440*Math.pow(2,(midi-69)/12);
+ function init(){
+  if(ctx||!AudioClass)return Boolean(ctx);
+  try{
+   ctx=new AudioClass();
+   master=ctx.createGain();musicBus=ctx.createGain();fxBus=ctx.createGain();
+   limiter=ctx.createDynamicsCompressor();
+   limiter.threshold.value=-15;limiter.knee.value=15;limiter.ratio.value=8;
+   limiter.attack.value=.005;limiter.release.value=.18;
+   master.gain.value=volume;musicBus.gain.value=musicLevel;fxBus.gain.value=effectsLevel;
+   musicBus.connect(master);fxBus.connect(master);master.connect(limiter);limiter.connect(ctx.destination);
+   // Um único buffer de ruído é compartilhado pelos efeitos percussivos.
+   const samples=Math.round(ctx.sampleRate*.42);
+   noiseBuffer=ctx.createBuffer(1,samples,ctx.sampleRate);
+   const data=noiseBuffer.getChannelData(0);
+   for(let i=0;i<samples;i++)data[i]=(Math.random()*2-1);
+   return true;
+  }catch(err){console.warn('Áudio indisponível:',err);return false;}
+ }
+ function tone(freq,when,duration,bus,opts={}){
+  if(!ctx||!bus||!Number.isFinite(freq)||freq<=0)return;
+  const at=Math.max(ctx.currentTime+.002,when),len=Math.max(.04,duration);
+  const amp=Math.max(.0001,opts.amp??.17),atk=Math.min(opts.attack??.012,len*.34);
+  const osc=ctx.createOscillator(),env=ctx.createGain();
+  osc.type=opts.wave||'triangle';
+  osc.frequency.setValueAtTime(freq,at);
+  if(opts.endFreq&&opts.endFreq>0)osc.frequency.exponentialRampToValueAtTime(opts.endFreq,at+Math.min(len,.25));
+  if(opts.detune)osc.detune.value=opts.detune;
+  env.gain.setValueAtTime(.0001,at);
+  env.gain.linearRampToValueAtTime(amp,at+atk);
+  env.gain.exponentialRampToValueAtTime(.0001,at+len);
+  let source=osc,filter=null;
+  if(opts.filter){
+   filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=opts.filter;
+   osc.connect(filter);source=filter;
+  }
+  source.connect(env);env.connect(bus);osc.start(at);osc.stop(at+len+.015);
+  osc.onended=()=>{osc.disconnect();if(filter)filter.disconnect();env.disconnect();};
+ }
+ function noise(when,duration,bus,amp=.09,kind='highpass',frequency=2300){
+  if(!ctx||!noiseBuffer)return;
+  const at=Math.max(ctx.currentTime+.002,when),len=Math.min(.4,Math.max(.025,duration));
+  const src=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),env=ctx.createGain();
+  src.buffer=noiseBuffer;filter.type=kind;filter.frequency.value=frequency;
+  env.gain.setValueAtTime(.0001,at);
+  env.gain.linearRampToValueAtTime(amp,at+.003);
+  env.gain.exponentialRampToValueAtTime(.0001,at+len);
+  src.connect(filter);filter.connect(env);env.connect(bus);
+  src.start(at);src.stop(at+len+.012);
+  src.onended=()=>{src.disconnect();filter.disconnect();env.disconnect();};
+ }
+ function kick(at,amp=1){tone(132,at,.18,musicBus,{wave:'sine',amp:.38*amp,attack:.003,endFreq:48});}
+ function snare(at){noise(at,.13,musicBus,.105,'highpass',1400);tone(188,at,.095,musicBus,{amp:.06,wave:'triangle',endFreq:95});}
+ function hat(at,accent=false){noise(at,.048,musicBus,accent?.036:.023,'highpass',4900);}
+ // Progressão e melodia originais: ritmo eletrônico moderno com baixo, percussão e sintetizadores.
+ const chords=[
+  {bass:38,notes:[62,65,69],lead:[74,77,81,77,74,69]},
+  {bass:34,notes:[58,62,65],lead:[70,74,77,74,70,65]},
+  {bass:41,notes:[65,69,72],lead:[77,81,84,81,77,72]},
+  {bass:36,notes:[60,64,67],lead:[72,76,79,76,72,67]}
+ ];
+ const melodySteps=[0,2,3,4,6,7];
+ function musicStep(at){
+  const part=position%8,chord=chords[Math.floor(position/8)%chords.length];
+  if(part%2===0)kick(at,part===0?1:.86);
+  if(part===2||part===6)snare(at);
+  if(part%2===1)hat(at,part===3||part===7);
+  if([0,3,4,6].includes(part)){
+   tone(hz(chord.bass+(part===3?12:0)),at,.33,musicBus,{wave:'sawtooth',amp:.17,attack:.008,filter:680});
+   tone(hz(chord.bass),at,.29,musicBus,{wave:'sine',amp:.10,attack:.008});
+  }
+  if(part===0){for(const n of chord.notes)tone(hz(n),at,1.7,musicBus,{wave:'sine',amp:.038,attack:.1});}
+  const idx=melodySteps.indexOf(part);
+  if(idx!==-1){
+   tone(hz(chord.lead[idx]),at,.28,musicBus,{wave:'triangle',amp:idx===0?.13:.095,attack:.007,filter:3800});
+   if(part===4)tone(hz(chord.lead[idx]-12),at,.30,musicBus,{wave:'sine',amp:.045});
+  }
+  position++;
+ }
+ function schedule(){
+  if(!ctx||ctx.state!=='running'||!musicOn||!tracksAllowed)return;
+  if(nextStep<ctx.currentTime)nextStep=ctx.currentTime+.035;
+  let loops=0;
+  while(nextStep<ctx.currentTime+.18&&loops++<4){musicStep(nextStep);nextStep+=STEP;}
+ }
+ function stopTrack(){
+  tracksAllowed=false;
+  if(timer){clearInterval(timer);timer=0;}
+ }
+ function startTrack(){
+  if(!musicOn||!ctx||ctx.state!=='running'||timer)return;
+  tracksAllowed=true;nextStep=ctx.currentTime+.055;
+  schedule();timer=setInterval(schedule,95);
+ }
+ // O navegador só libera o áudio após uma interação (clique/toque).
+ function unlock(){
+  if(!init())return Promise.resolve(false);
+  return ctx.resume().then(()=>{if(musicOn)startTrack();return true;}).catch(()=>false);
+ }
+ function sparkle(at,notes,amp=.26,space=.085){
+  notes.forEach((n,i)=>{
+   tone(hz(n),at+i*space,.26,fxBus,{wave:'triangle',amp:amp*(1-i*.07),attack:.006,filter:5500});
+   tone(hz(n+12),at+i*space,.16,fxBus,{wave:'sine',amp:amp*.23,attack:.003});
+  });
+ }
+ function impact(at,bass=100,amp=.29){
+  tone(bass,at,.2,fxBus,{wave:'sine',amp,endFreq:Math.max(38,bass*.57),attack:.002});
+  noise(at,.09,fxBus,amp*.25,'highpass',1800);
+ }
+ function cue(kind){
+  if(!effectsOn||!ctx||ctx.state!=='running')return;
+  const at=ctx.currentTime+.014;
+  switch(kind){
+   case 'start': impact(at,145,.26);sparkle(at+.06,[67,72,76,79],.29,.095);break;
+   case 'resume':sparkle(at,[74,79,83],.22,.09);break;
+   case 'pause':tone(520,at,.13,fxBus,{wave:'triangle',amp:.22,endFreq:310});tone(260,at+.1,.2,fxBus,{amp:.16});break;
+   case 'purchase':impact(at,150,.29);sparkle(at+.045,[74,78,81,86],.27,.065);break;
+   case 'upgrade':impact(at,122,.22);sparkle(at+.04,[72,76,79,84],.26,.088);noise(at+.26,.16,fxBus,.065,'highpass',3800);break;
+   case 'hire':sparkle(at,[69,73,76,81],.28,.11);tone(220,at,.3,fxBus,{amp:.16});break;
+   case 'fire':impact(at,110,.29);sparkle(at+.06,[69,65,60],.23,.11);break;
+   case 'sell':impact(at,132,.27);sparkle(at+.06,[76,81,85],.28,.09);noise(at+.09,.16,fxBus,.07,'highpass',3700);break;
+   case 'good':sparkle(at,[74,78,81],.26,.09);break;
+   case 'bad':impact(at,145,.28);sparkle(at+.05,[65,61,57],.22,.10);break;
+   case 'warning':impact(at,160,.23);tone(740,at+.07,.24,fxBus,{wave:'triangle',amp:.24});tone(620,at+.34,.24,fxBus,{wave:'triangle',amp:.23});break;
+   case 'tick':tone(850,at,.08,fxBus,{wave:'triangle',amp:.25,attack:.002,endFreq:665});break;
+   case 'finish':impact(at,145,.3);sparkle(at+.05,[69,72,76,81,84],.28,.13);tone(220,at+.55,.78,fxBus,{wave:'sine',amp:.18});break;
+   case 'bankrupt':impact(at,118,.33);sparkle(at+.06,[65,62,57,53,48],.27,.15);break;
+   default:break;
+  }
+ }
+ function setMusic(on){musicOn=Boolean(on);if(musicOn)unlock();else stopTrack();}
+ function setEffects(on){effectsOn=Boolean(on);}
+ function setVolume(value){volume=Math.max(0,Math.min(1,Number(value)||0));if(master&&ctx)master.gain.setTargetAtTime(volume,ctx.currentTime,.035);}
+ function setMusicVolume(value){musicLevel=Math.max(0,Math.min(1,Number(value)||0));if(musicBus&&ctx)musicBus.gain.setTargetAtTime(musicLevel,ctx.currentTime,.04);}
+ function setEffectsVolume(value){effectsLevel=Math.max(0,Math.min(1,Number(value)||0));if(fxBus&&ctx)fxBus.gain.setTargetAtTime(effectsLevel,ctx.currentTime,.04);}
+ function suspendWhenHidden(){
+  if(!ctx)return;
+  if(document.hidden){stopTrack();ctx.suspend().catch(()=>{});}
+  else if(ctx.state==='suspended')ctx.resume().then(()=>{if(musicOn)startTrack();}).catch(()=>{});
+ }
+ document.addEventListener('visibilitychange',suspendWhenHidden);
+ window.addEventListener('pagehide',()=>{stopTrack();if(ctx)ctx.suspend().catch(()=>{});});
+ return {unlock,cue,setMusic,setEffects,setVolume,setMusicVolume,setEffectsVolume,stopTrack,
+  get supported(){return Boolean(AudioClass)},get playing(){return Boolean(timer)},
+  get musicOn(){return musicOn},get effectsOn(){return effectsOn},
+  get masterVolume(){return volume},get musicVolume(){return musicLevel},get effectsVolume(){return effectsLevel}};
+})();
+function setupAudioControls(){
+ const pop=$('audioPopover'),button=$('audioToggle');
+ button.addEventListener('click',()=>{
+  const open=pop.hidden;pop.hidden=!open;button.setAttribute('aria-expanded',String(open));
+  if(open)GameAudio.unlock();
+ });
+ $('musicEnabled').addEventListener('change',e=>{
+  GameAudio.setMusic(e.target.checked);GameAudio.cue('resume');updateAudioButton();
+ });
+ $('effectsEnabled').addEventListener('change',e=>{
+  GameAudio.setEffects(e.target.checked);if(e.target.checked){GameAudio.unlock().then(()=>GameAudio.cue('good'));}
+  updateAudioButton();
+ });
+ $('audioVolume').addEventListener('input',e=>{
+  const n=Number(e.target.value);$('audioVolumeValue').textContent=n+'%';GameAudio.setVolume(n/100);
+ });
+ $('musicVolume').addEventListener('input',e=>{
+  const n=Number(e.target.value);$('musicVolumeValue').textContent=n+'%';GameAudio.setMusicVolume(n/100);
+ });
+ $('effectsVolume').addEventListener('input',e=>{
+  const n=Number(e.target.value);$('effectsVolumeValue').textContent=n+'%';GameAudio.setEffectsVolume(n/100);
+ });
+ document.addEventListener('pointerdown',e=>{
+  if(!pop.hidden&&!$('audioControls').contains(e.target)){
+   pop.hidden=true;button.setAttribute('aria-expanded','false');
+  }
+ });
+ document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&!pop.hidden){pop.hidden=true;button.setAttribute('aria-expanded','false');}
+ });
+ if(!GameAudio.supported){button.textContent='🔇 Áudio indisponível';button.disabled=true;}
+}
+function updateAudioButton(){
+ $('audioToggle').textContent=GameAudio.musicOn||GameAudio.effectsOn?'🔊 Som':'🔇 Sem som';
+}
+
+const cooldownRemaining=()=>Math.max(0,(purchaseCooldownUntil-performance.now())/1000);
+function notifyNews(title,detail,kind='event'){
+ const zone=$('toastZone');if(!zone)return;
+ const article=document.createElement('article');article.className='news-toast '+kind;
+ const heading=document.createElement('strong');heading.textContent=title;
+ const description=document.createElement('p');description.textContent=detail;
+ const foot=document.createElement('div');foot.className='news-foot';
+ const label=document.createElement('span');label.textContent=s.month?`Ano ${Math.ceil(s.month/12)} • Mês ${s.month}`:'Início da partida';
+ const close=document.createElement('button');close.type='button';close.textContent='✕';close.setAttribute('aria-label','Fechar notícia');close.onclick=()=>article.remove();
+ foot.append(label,close);article.append(heading,description,foot);zone.prepend(article);
+ while(zone.children.length>3)zone.lastElementChild.remove();
+ setTimeout(()=>article.remove(),4700);
+}
+function renderPurchaseCooldown(){
+ const remain=cooldownRemaining();
+ document.querySelectorAll('[data-action]').forEach(b=>{
+   if(b.dataset.action==='hire'||b.dataset.action==='fire')return;
+   if(!b.dataset.originalLabel)b.dataset.originalLabel=b.textContent;
+   b.classList.toggle('cooling',remain>0);
+   b.textContent=remain>0?`⏳ ${remain.toFixed(1).replace('.',',')} s`:b.dataset.originalLabel;
+   if(remain>0)b.disabled=true;
+ });
+}
+function completePurchase(type,cost){
+ purchaseCooldownUntil=performance.now()+PURCHASE_WAIT_MS;
+ const title=SECTORS[type]?`${SECTORS[type].icon} Compra realizada!`:'✅ Investimento concluído!';
+ const description=SECTORS[type]
+ ?`${SECTORS[type].short} adquirida por ${money(cost)}. A nova unidade já integra a cidade. Aguarde 1,5 segundo para outra compra.`
+ :`${UPGRADES.find(a=>a.id===type)?.title||'Melhoria'}: investimento de ${money(cost)} confirmado. Nova compra disponível em 1,5 segundo.`;
+ notifyNews(title,description,'good');
+ GameAudio.cue(SECTORS[type]?'purchase':'upgrade');
+ renderPurchaseCooldown();
+}
+
+
+/* Dicas orientadas pelos indicadores: alertam apenas durante a partida. */
+let nextTipAt=12, lastTipKey='', tipTimer=0;
+const tipCounts=Object.create(null);
+function chooseManagementTip(){
+ const c=[];
+ if(unitCount()===0)c.push({key:'start',priority:10,title:'Comece sua empresa',text:'Abra um setor para criar sua primeira fonte de receita.',action:'shop'});
+ if(unitCount()&&s.employees<staffDemand())c.push({key:'staff',priority:8,title:'Equipe abaixo do necessário',text:`Você tem ${s.employees} funcionário(s), mas precisa de ${staffDemand()} para operar plenamente. Considere contratar.`,action:'hire'});
+ if(s.prod<60&&unitCount())c.push({key:'prod',priority:s.prod<45?10:7,title:'⚡ Foque na produtividade',text:'Invista em máquinas ou capacitação. A produtividade afeta a receita de todos os setores.',action:'machines'});
+ if(s.rep<48&&unitCount())c.push({key:'rep',priority:7,title:'⭐ Reputação em risco',text:'Campanhas e uma operação estável ajudam a recuperar a confiança dos clientes.',action:'marketing'});
+ if(s.demand<48&&unitCount())c.push({key:'demand',priority:7,title:'🛒 Demanda está baixa',text:'Marketing pode atrair clientes e melhorar a receita nos próximos meses.',action:'marketing'});
+ if(s.sustain<60&&unitCount())c.push({key:'eco',priority:8,title:'🌱 Cuide da sustentabilidade',text:'Manutenção e sustentabilidade ajudam a reduzir falhas e impactos ambientais.',action:'care'});
+ if(s.units.farm&&s.farmUpgrade===0&&(s.weather==='Seca'||s.weather==='Chuvas fortes'))c.push({key:'farm',priority:8,title:'🌾 Safra ameaçada pelo clima',text:'Melhorias agrícolas podem reduzir as perdas causadas por condições climáticas.',action:'farmUpgrade'});
+ if(s.cash<15000&&unitCount())c.push({key:'cash',priority:9,title:'💰 Caixa em atenção',text:'Evite novos investimentos caros e reveja as despesas antes de expandir.',action:'financePanel'});
+ if(s.month>0&&s.lastProfit<0)c.push({key:'loss',priority:8,title:'📉 O mês fechou no vermelho',text:'Revise despesas e equipe. O lucro só cresce quando a receita supera os custos.',action:'financePanel'});
+ if(!c.length)return null;
+ c.sort((a,b)=>(b.priority-(tipCounts[b.key]||0)*3)-(a.priority-(tipCounts[a.key]||0)*3));
+ return c.find(t=>t.key!==lastTipKey&&(tipCounts[t.key]||0)<3)||c.find(t=>(tipCounts[t.key]||0)<3)||null;
+}
+function clearManagementTip(){clearTimeout(tipTimer);$('tipZone').replaceChildren();}
+function hideFinalAlert(){
+ const alert=$('finalAlert');
+ if(alert){alert.hidden=true;alert.classList.remove('urgent');}
+ lastCountdownValue=null;
+}
+function updateFinalCountdown(){
+ const remaining=Math.max(0,GAME_SECONDS-s.elapsed);
+ if(!s.started||s.finished||remaining>30||remaining<=0){
+  if(!$('finalAlert').hidden)hideFinalAlert();
+  return;
+ }
+ const seconds=Math.ceil(remaining);
+ const alert=$('finalAlert');
+ if(!finalThirtyAlertShown){
+  finalThirtyAlertShown=true;
+  alert.hidden=false;
+  GameAudio.cue('warning');
+  addLog('⏰ Reta final: os últimos 30 segundos começaram.','event');
+ }
+ if(seconds!==lastCountdownValue){
+  $('finalCountdown').textContent=String(seconds);
+  alert.classList.toggle('urgent',seconds<=10);
+  if(seconds<=5)GameAudio.cue('tick');
+  lastCountdownValue=seconds;
+ }
+}
+function showManagementTip(tip){
+ if(!tip)return false;
+ lastTipKey=tip.key;tipCounts[tip.key]=(tipCounts[tip.key]||0)+1;
+ const zone=$('tipZone');zone.replaceChildren();
+ const card=document.createElement('article');card.className='tip-card';
+ const eyebrow=document.createElement('div');eyebrow.className='tip-eyebrow';eyebrow.textContent='💡 DICA DE GESTÃO';
+ const title=document.createElement('strong');title.className='tip-title';title.textContent=tip.title;
+ const text=document.createElement('p');text.textContent=tip.text;
+ const close=document.createElement('button');close.type='button';close.className='tip-close';close.textContent='✕';close.setAttribute('aria-label','Fechar dica');close.onclick=clearManagementTip;
+ const go=document.createElement('button');go.type='button';go.className='tip-link';go.textContent='Ver onde agir';
+ go.onclick=()=>{clearManagementTip();const target=$(tip.action==='financePanel'?'financePanel':`decision-${tip.action}`);if(target){target.scrollIntoView({behavior:'smooth',block:'center'});target.classList.add('decision-focus');setTimeout(()=>target.classList.remove('decision-focus'),2600);}};
+ card.append(eyebrow,title,text,close,go);zone.append(card);
+ tipTimer=setTimeout(()=>{if(card.isConnected)card.remove()},7600);return true;
+}
+function checkTips(){
+ if(!guideReady||!s.started||s.paused||s.finished||s.elapsed<nextTipAt||$('overlay').classList.contains('active')||$('sectorOverlay').classList.contains('active'))return;
+ nextTipAt=s.elapsed+27;showManagementTip(chooseManagementTip());
+}
+
+const unitCount=()=>Object.values(s.units).reduce((a,b)=>a+b,0);
+const staffDemand=()=>Object.keys(SECTORS).reduce((n,k)=>n+s.units[k]*SECTORS[k].staff,0);
+const staffing=()=>staffDemand()?Math.min(1,.35+.65*s.employees/staffDemand()):1;
+const valuation=()=>Math.max(0,s.cash+Object.keys(SECTORS).reduce((n,k)=>n+s.units[k]*SECTORS[k].asset,0)+s.machines*6500+s.farmUpgrade*5000+s.eco*2000);
+const saleUnitPrice=key=>{const d=SECTORS[key];if(!d)return 0;const market=.82+.002*s.rep+.001*s.demand;return round(d.asset*market);};
+function sellSector(key,qty=1){if(!guideReady||s.finished||s.paused||!SECTORS[key]||qty!==1||s.units[key]<1)return false;const proceeds=saleUnitPrice(key);s.units[key]--;s.cash+=proceeds;s.salesProceeds+=proceeds;s.soldUnits++;addLog(`🏷️ Venda de 1 unidade de ${SECTORS[key].label}: +${money(proceeds)} em caixa. Despesas e receitas operacionais futuras ajustadas. A folha salarial continua até reorganizar a equipe.`,'event');notifyNews('🏷️ Venda concluída',`1 unidade de ${SECTORS[key].label} vendida: ${money(proceeds)} recebidos.`, 'good');GameAudio.cue('sell');update();return true;}
+const sectorBlank=()=>Object.fromEntries(Object.keys(SECTORS).map(k=>[k,{revenue:0,expenses:0}]));
+function addLog(message,type='event') { const entry={message,type,month:s.month};s.logs.unshift(entry);if(s.logs.length>45)s.logs.pop();const node=document.createElement('div');node.className='logitem '+type;const small=document.createElement('small');small.textContent=s.month===0?'Início da partida':`Ano ${Math.ceil(s.month/12)} • mês ${s.month}`;node.append(small,document.createTextNode(message));$('log').prepend(node);while($('log').children.length>18)$('log').lastElementChild.remove(); }
+function makeAction(a){
+ const consult=SECTORS[a.id]?`<button type="button" class="sector-open" data-sector="${a.id}">📊 Consultar setor</button>`:'';
+ return `<article class="decision-card decision-row" id="decision-${a.id}" tabindex="-1">
+ <div class="decision-card__head"><span class="decision-card__icon" aria-hidden="true">${a.icon}</span><strong>${a.title}</strong></div>
+ <small class="decision-card__meta" id="actionCount-${a.id}"></small>
+ <p class="decision-card__description">${a.description}</p>
+ <div class="decision-card__footer"><span class="decision-card__price">${money(a.cost)}</span>
+ <div class="decision-card__buttons">${consult}<button type="button" class="${a.id==='farm'?'primary':'secondary'}" data-action="${a.id}">${a.button}</button></div></div>
+ </article>`;
+}
+function makePeopleCard(id,title,icon,description,cost,hint,verb){
+ return `<article class="decision-card decision-row" id="decision-${id}" tabindex="-1">
+ <div class="decision-card__head"><span class="decision-card__icon" aria-hidden="true">${icon}</span><strong>${title}</strong></div>
+ <small class="decision-card__meta" id="${hint}"></small>
+ <p class="decision-card__description">${description}</p>
+ <div class="decision-card__footer"><span class="decision-card__price">${money(cost)} / pessoa</span>
+ <div class="decision-card__buttons"><select id="${id}Qty" aria-label="Quantidade de funcionários para ${verb}"></select>
+ <button type="button" class="secondary" data-action="${id}">${title.startsWith('Contratar')?'Contratar':'Demitir'}</button></div></div></article>`;
+}
+function initActions(){
+ $('businessActions').innerHTML=ACTIONS.map(makeAction).join('');
+ $('growthActions').innerHTML=UPGRADES.map(makeAction).join('');
+ $('peopleActions').innerHTML=
+  makePeopleCard('hire','Contratar funcionários','👷',`Eleva a capacidade de operação; salário de ${money(SALARY)} por pessoa a cada mês.`,1100,'hireHint','contratar')+
+  makePeopleCard('fire','Demitir funcionários','📋','Reduz salários futuros; gera indenização e pode prejudicar a operação e reputação.',TERMINATION,'fireHint','demitir');
+ document.querySelectorAll('[data-action]').forEach(btn=>btn.addEventListener('click',()=>act(btn.dataset.action)));
+ document.querySelectorAll('[data-sector]').forEach(btn=>btn.addEventListener('click',()=>openSector(btn.dataset.sector)));
+}
+function refreshSelect(id,max){const el=$(id), old=Number(el.value)||1;if(el.options.length!==max){el.replaceChildren();for(let i=1;i<=max;i++){const opt=document.createElement('option');opt.value=String(i);opt.textContent=String(i);el.append(opt)}}if(max)el.value=String(Math.min(max,old));}
+function act(type,forcedQty){if(!guideReady||s.paused||s.finished)return false;
+ if(type!=='hire'&&type!=='fire'&&cooldownRemaining()>0){notifyNews('⏳ Compra aguardando',`Você poderá realizar outra compra em ${cooldownRemaining().toFixed(1).replace('.',',')} s.`,'event');return false}if(type==='hire'||type==='fire'){const qty=forcedQty===undefined?Number($(type==='hire'?'hireQty':'fireQty').value):forcedQty;if(!Number.isSafeInteger(qty)||qty<1||qty> (type==='hire'?5:s.employees)){addLog('Quantidade de funcionários inválida. Confira o total disponível.','bad');return false}if(type==='hire'&&unitCount()===0){addLog('Abra um empreendimento antes de contratar.','bad');return false}const cost=qty*(type==='hire'?1100:TERMINATION);if(s.cash<cost){addLog(`Caixa insuficiente para ${type==='hire'?'contratar':'pagar a indenização'} de ${qty} pessoa(s).`,'bad');return false}const before=staffing();s.cash-=cost;s.investment+=type==='hire'?cost:0;if(type==='hire'){s.employees+=qty;s.hireCount+=qty;s.prod=clamp(s.prod+Math.min(5,qty*1.5));addLog(`👷 Contratados ${qty} funcionário(s). Recrutamento ${money(cost)}; folha mensal agora ${money(s.employees*SALARY)}. Capacidade operacional ${round(staffing()*100)}%.`,'good');notifyNews('👷 Contratação concluída',`${qty} funcionário(s) contratado(s). Recrutamento: ${money(cost)}. Nova folha mensal: ${money(s.employees*SALARY)}.`, 'good');GameAudio.cue('hire')}else{s.employees-=qty;s.fireCount+=qty;s.indemnities+=cost;s.totalExpenses+=cost;s.totalProfit-=cost;s.lastExpenses+=cost;s.lastProfit-=cost;if(s.history.length)s.history[s.history.length-1]-=cost;s.rep=clamp(s.rep-Math.min(13,qty*2));if(staffing()<before){s.prod=clamp(s.prod-Math.min(12,qty*2))}addLog(`📋 Demitidos ${qty} funcionário(s). Indenização ${money(cost)}; folha reduzida para ${money(s.employees*SALARY)}/mês. Capacidade operacional ${round(staffing()*100)}%; reputação afetada.`,'bad');notifyNews('📋 Demissão registrada',`${qty} funcionário(s) desligado(s). Indenização: ${money(cost)}. Nova folha mensal: ${money(s.employees*SALARY)}.`, 'bad');GameAudio.cue('fire')}update();return true}
+ const unit=SECTORS[type], upgrade=UPGRADES.find(a=>a.id===type), action=ACTIONS.find(a=>a.id===type);if(!unit&&!upgrade)return false;const cost=(action||upgrade).cost;if(unit&&unitCount()>=MAX_UNITS){addLog(`Limite de ${MAX_UNITS} unidades atingido. Concentre-se na eficiência!`,'bad');return false}if(!unit&&unitCount()===0){addLog('Primeiro abra um negócio para investir em melhorias.','bad');return false}if(type==='farmUpgrade'&&!s.units.farm){addLog('Você precisa de uma fazenda antes de investir na produtividade agrícola.','bad');return false}if(type==='training'&&s.employees===0){addLog('Contrate uma equipe antes de oferecer treinamento.','bad');return false}if(s.cash<cost){addLog(`Caixa insuficiente para ${action?.title||upgrade.title}: faltam ${money(cost-s.cash)}.`,'bad');return false}s.cash-=cost;s.investment+=cost;
+ if(unit){s.units[type]++;if(type==='shop'){s.rep=clamp(s.rep+3);s.demand=clamp(s.demand+3)}if(type==='factory'){s.prod=clamp(s.prod+5);s.sustain=clamp(s.sustain-5)}if(type==='tech'){s.prod=clamp(s.prod+4);s.rep=clamp(s.rep+2)}if(type==='farm'){s.sustain=clamp(s.sustain-2)}addLog(`${unit.icon} ${unit.short} inaugurada por ${money(cost)}! Sua operação precisa de ${staffDemand()} pessoas para atingir capacidade máxima.`,'good')}
+ else {switch(type){case 'marketing':s.rep=clamp(s.rep+8);s.demand=clamp(s.demand+12);break;case 'machines':s.machines++;s.prod=clamp(s.prod+9);s.sustain=clamp(s.sustain+1);break;case 'training':s.training++;s.prod=clamp(s.prod+7);s.rep=clamp(s.rep+1);break;case 'care':s.maintenance++;s.eco++;s.sustain=clamp(s.sustain+10);s.rep=clamp(s.rep+2);break;case 'farmUpgrade':s.farmUpgrade++;s.sustain=clamp(s.sustain+3);s.prod=clamp(s.prod+2);break;}addLog(`${upgrade.icon} ${upgrade.title}: ${money(cost)} investidos. Indicadores e custos atualizados.`,'good')}
+ completePurchase(type,cost);update();return true;}
+
+let activeSector=null;
+function openSector(key){if(!SECTORS[key])return;activeSector=key;renderSectorDetail();$('sectorOverlay').classList.add('active');}
+function renderSectorDetail(){
+ const key=activeSector;
+ if(!key||!SECTORS[key])return;
+ const d=SECTORS[key], count=s.units[key], last=s.sectorLast[key];
+ const totalNeeded=staffDemand(), workers=count*d.staff;
+ // Rateio simplificado dos salários e impostos do fechamento mensal.
+ const salaries=totalNeeded?Math.round(s.employees*SALARY*workers/totalNeeded):0;
+ const revenue=last.revenue;
+ const taxes=revenue>0&&s.lastRevenue>0?Math.round(s.lastTaxes*revenue/s.lastRevenue):0;
+ const expenses=last.expenses+salaries;
+ const profit=revenue-expenses-taxes;
+ const businessValue=count*saleUnitPrice(key);
+ $('sectorTitle').textContent=d.label;
+ $('sectorIcon').textContent=d.icon;
+ const fields=[
+  ['📈 Receita bruta',revenue],
+  ['🧾 Impostos',taxes],
+  ['📉 Despesas',expenses],
+  ['💚 Lucro',profit],
+  ['🏢 Valor da empresa',businessValue]
+ ];
+ $('sectorKpis').innerHTML=fields.map(([label,value],i)=>
+  `<div class="fin${i===4?' sector-valuation':''}"><span>${label}</span><b class="${i===3?(value>=0?'positive':'negative'):''}">${money(value)}</b></div>`
+ ).join('');
+ $('sellSector').disabled=!count||s.finished||s.paused;
+ $('saleQuote').textContent=money(saleUnitPrice(key));
+ $('saleHint').textContent=count?`${count} unidade(s) disponível(is). Venda apenas 1 por operação.`:'Não há empresas deste setor para vender.';
+}
+function closeSector(){activeSector=null;$('sectorOverlay').classList.remove('active')}
+
+function chooseWeather(){const r=Math.random();let weather,factor;if(r<.14){weather='Seca';factor=.55}else if(r<.28){weather='Chuvas fortes';factor=.72}else if(r<.52){weather='Boa safra';factor=1.30}else{weather='Estável';factor=1}const protection=Math.min(.32,s.farmUpgrade*.07+s.eco*.025);if(factor<1)factor=Math.min(1,factor+protection);s.weather=weather;s.weatherFactor=factor;return factor;}
+function event(forced){const pool=['demand','energy','rating','contract','breakdown','competition'];if(s.units.farm)pool.push('drought','harvest','cropPrice','pests');const type=forced||pool[Math.floor(Math.random()*pool.length)];s.events++;let cashChange=0;
+ switch(type){case 'demand':s.demand=clamp(s.demand+11);addLog('📈 Mercado aquecido: a demanda aumentou 11 pontos.','good');break;case 'energy':cashChange=-5000;s.sustain=clamp(s.sustain-4);addLog('⚡ Energia mais cara: saída extraordinária de R$ 5.000 e maior impacto ambiental.','bad');break;case 'rating':s.rep=clamp(s.rep+8);addLog('🏆 Clientes avaliaram positivamente sua empresa. Reputação +8.','good');break;case 'contract':cashChange=7000;addLog('🤝 Contrato inesperado acrescentou R$ 7.000 à receita extraordinária.','good');break;case 'breakdown':s.prod=clamp(s.prod-(s.maintenance?3:8));cashChange=s.maintenance?-1200:-3500;addLog(`🔧 Falha operacional: ${money(-cashChange)} em reparos; manutenção ajudou a limitar o dano.`,'bad');break;case 'competition':s.demand=clamp(s.demand-9);addLog('📉 Promoção da concorrência reduziu a demanda em 9 pontos.','bad');break;case 'drought':s.weather='Seca';s.weatherFactor=Math.max(.45,.55+s.farmUpgrade*.07+s.eco*.025);s.harvestFactor=.8;s.sustain=clamp(s.sustain-3);addLog('☀️ Seca no campo! Próximas safras ficam prejudicadas; irrigação reduz o impacto.','bad');break;case 'harvest':s.harvestFactor=1.3;s.sustain=clamp(s.sustain+2);addLog('🌾 Colheita excepcional! A produção agrícola receberá bônus na próxima safra.','good');break;case 'cropPrice':cashChange=s.units.farm*2200;addLog(`📦 Valorização dos produtos agrícolas: entrada adicional de ${money(cashChange)}.`,'good');break;case 'pests':cashChange=-s.units.farm*Math.max(800,2600-s.farmUpgrade*350);s.sustain=clamp(s.sustain-2);addLog(`🐛 Pragas agrícolas exigiram ${money(-cashChange)} em controle e manejo.`, 'bad');break;default:s.events--;return false}
+ GameAudio.cue(['energy','breakdown','competition','drought','pests'].includes(type)?'bad':'good');
+ if(cashChange){const gain=Math.max(0,cashChange),cost=Math.max(0,-cashChange),tax=round(gain*.08),net=gain-cost-tax;s.cash+=net;s.lastRevenue+=gain;s.lastExpenses+=cost;s.lastTaxes+=tax;s.lastProfit+=net;s.totalRevenue+=gain;s.totalExpenses+=cost;s.totalTaxes+=tax;s.totalProfit+=net;const key=s.units.farm&&(type==='cropPrice'||type==='pests')?'farm':null;if(key){s.sectorLast[key].revenue+=gain;s.sectorLast[key].expenses+=cost;s.sectorTotals[key].revenue+=gain;s.sectorTotals[key].expenses+=cost}if(s.history.length)s.history[s.history.length-1]+=net}
+ update();return true;}
+function monthly(){if(s.finished||s.month>=TOTAL_MONTHS)return;s.month++;const demandFactor=.6+s.demand/125,repFactor=.75+s.rep/200,prodFactor=.65+s.prod/150;const capacity=staffing();const weather=chooseWeather();const breakdown=sectorBlank();let revenue=0,operating=0;
+ for(const [key,cfg] of Object.entries(SECTORS)){const count=s.units[key];if(!count)continue;let factor=demandFactor*repFactor*prodFactor*capacity;if(key==='shop')factor*=.95+s.rep/1000;if(key==='factory')factor*=.9+s.machines*.065;if(key==='tech')factor*=.88+s.training*.065;if(key==='farm')factor*=weather*s.harvestFactor*(1+s.farmUpgrade*.13);const randomness=.94+Math.random()*.12;const rev=round(count*cfg.baseRevenue*factor*randomness);let expense=count*cfg.operation;if(key==='factory')expense+=count*Math.max(0,400-s.maintenance*65);if(key==='farm')expense+=count*(weather<1?600:0)+count*s.farmUpgrade*180;if(key==='tech')expense+=count*s.training*90;expense=round(expense);breakdown[key]={revenue:rev,expenses:expense};revenue+=rev;operating+=expense;s.sectorTotals[key].revenue+=rev;s.sectorTotals[key].expenses+=expense}
+ const salary=s.employees*SALARY,overhead=s.machines*240+s.maintenance*120+s.eco*170+s.training*100;const expenses=operating+salary+overhead;const taxes=round(Math.max(0,revenue-expenses)*.08),profit=revenue-expenses-taxes;s.cash+=profit;s.totalProfit+=profit;s.totalRevenue+=revenue;s.totalExpenses+=expenses;s.totalTaxes+=taxes;s.lastRevenue=revenue;s.lastExpenses=expenses;s.lastTaxes=taxes;s.lastProfit=profit;s.sectorLast=breakdown;s.history.push(profit);
+ s.rep=clamp(s.rep+(profit>=0?1:-2)+(s.sustain>=65?1:0));s.demand=clamp(s.demand+(Math.random()<.55?1:-1));if(s.units.factory)s.sustain=clamp(s.sustain-.35*s.units.factory+s.eco*.2);if(s.units.farm)s.sustain=clamp(s.sustain-.12*s.units.farm+s.farmUpgrade*.05);if(capacity<.7&&unitCount())s.rep=clamp(s.rep-1);s.harvestFactor=1;
+ addLog(`📒 Mês ${s.month}: receita ${money(revenue)}, despesas ${money(expenses)} (salários ${money(salary)}), tributos ${money(taxes)}. Resultado: ${money(profit)}.`,profit>=0?'good':'bad');if(s.units.farm&&weather!=='Estável')addLog(`🌦️ Clima agrícola: ${s.weather}. Fator de safra ${round(weather*100)}%.`,weather>=1?'good':'bad');if(s.month%6===0)event();if(s.cash<0){s.rep=clamp(s.rep-3);addLog('⚠️ Caixa negativo! O negócio precisa se recuperar. Investimentos ficam indisponíveis até o caixa melhorar.','bad')}
+ update();if(s.month===TOTAL_MONTHS)finish();}
+// SVG local e leve: cenário funciona até sem conexão com a internet.
+const windowRect=(x,y,w,h)=>`<rect class="lit-window" x="${x}" y="${y}" width="${w}" height="${h}" rx="2" stroke="#d9eff5" stroke-width="1.5"/>`;
+const art={shop:`<svg viewBox="0 0 160 130" aria-hidden="true"><path fill="#254558" d="M20 40H143V125H20Z"/><path fill="#c6a27e" d="M14 38H146V123H14Z"/><rect x="20" y="58" width="120" height="67" fill="#d6c2a1"/><path d="M11 53L25 25H133L149 53Z" fill="#245b6b" stroke="#e7d4b2" stroke-width="3"/><rect x="30" y="17" width="100" height="23" rx="5" fill="#295766" stroke="#ead49b" stroke-width="3"/><text x="80" y="32" text-anchor="middle" class="built-sign">MERCADO</text><rect x="25" y="64" width="44" height="44" rx="3" fill="#3b8295" stroke="#eee4c5" stroke-width="4"/><rect class="lit-window" x="29" y="68" width="36" height="36" rx="2"/><path d="M47 68V104M29 88H65" stroke="#386174" stroke-width="3"/><rect x="80" y="64" width="37" height="61" fill="#346d7f" stroke="#eddfc2" stroke-width="4"/><rect class="lit-window" x="85" y="68" width="27" height="52" rx="2"/><circle cx="109" cy="97" r="2.6" fill="#fff"/><path d="M18 54H144L138 64H24Z" fill="#f4ae7b"/><path d="M20 54H40L36 64H22ZM59 54H79L77 64H56ZM98 54H117L115 64H95Z" fill="#faf1de"/></svg>`,factory:`<svg viewBox="0 0 170 170" aria-hidden="true"><rect x="17" y="60" width="144" height="102" fill="#52748a" stroke="#d2e0d9" stroke-width="3"/><path d="M17 65L53 37V65L89 37V65L125 37V65H161" fill="#819bac" stroke="#d9e1dd" stroke-width="3"/><rect x="112" y="4" width="23" height="53" fill="#b7c3c6" stroke="#e8e0d2" stroke-width="3"/><path d="M112 23h23M112 38h23" stroke="#d28066" stroke-width="6"/><rect x="26" y="89" width="36" height="33" fill="#2b5871" stroke="#ecedef" stroke-width="3"/>${windowRect(29,92,30,27)}<rect x="72" y="89" width="36" height="33" fill="#2b5871" stroke="#ecedef" stroke-width="3"/>${windowRect(75,92,30,27)}<rect x="119" y="91" width="29" height="71" fill="#263f59" stroke="#ced9db" stroke-width="3"/><path d="M119 105h29M119 121h29M119 137h29" stroke="#647f8f" stroke-width="2"/><rect x="38" y="68" width="85" height="17" fill="#263b4b"/><text x="80" y="80" class="built-sign" text-anchor="middle">INDÚSTRIA</text></svg>`,tech:`<svg viewBox="0 0 130 195" aria-hidden="true"><path d="M16 190V33L64 6L115 33V190" fill="#50678b" stroke="#cad8e6" stroke-width="4"/><path d="M63 7V190" stroke="#8297bf" stroke-width="3"/><rect x="24" y="37" width="83" height="29" rx="3" fill="#263950" stroke="#6cc6d0" stroke-width="2"/><text x="66" y="55" text-anchor="middle" class="built-sign">DATA LAB</text>${[75,108,141].map(y=>[26,71].map(x=>windowRect(x,y,33,23)).join('')).join('')}<rect x="50" y="170" width="30" height="20" fill="#183a59" stroke="#d3e6eb" stroke-width="2"/><path d="M65 18V31" stroke="#77e2ca" stroke-width="5"/><circle cx="65" cy="15" r="5" fill="#8cead1"/></svg>`,farm:`<svg viewBox="0 0 205 130" aria-hidden="true"><path d="M1 94L204 94V128H1Z" fill="#6c9654"/><path d="M10 106H199M10 117H199" stroke="#9bbf62" stroke-width="4"/><path d="M63 49L117 16L173 49Z" fill="#bc6a54" stroke="#f4cf9e" stroke-width="4"/><rect x="74" y="47" width="89" height="63" fill="#e4c99c" stroke="#efdfb9" stroke-width="3"/><rect x="109" y="67" width="30" height="43" fill="#846850" stroke="#e3f1e1" stroke-width="3"/><path d="M110 68L138 108M138 68L110 108" stroke="#f3deba" stroke-width="3"/>${windowRect(82,62,18,20)}<path d="M154 32L165 24V49" stroke="#f4cf9e" stroke-width="5"/><rect x="18" y="72" width="43" height="34" rx="7" fill="#699b57" stroke="#b5c8a1" stroke-width="2"/><path d="M39 73V105" stroke="#dfe6be" stroke-width="3"/><path d="M7 124L44 105L74 124M57 125L91 110L126 125M119 126L158 107L200 126" fill="none" stroke="#eac87d" stroke-width="7"/><path d="M9 117L39 102M61 117L91 103M129 116L159 101" stroke="#4a9e56" stroke-width="8" stroke-linecap="round"/><text x="121" y="59" text-anchor="middle" font-size="9" font-weight="900" fill="#5c5033">FAZENDA</text></svg>`};
+function buildScene(){const tree=`<svg viewBox="0 0 40 75" aria-hidden="true"><path d="M18 73V36" stroke="#765944" stroke-width="7" stroke-linecap="round"/><circle cx="20" cy="26" r="18" fill="#277e61"/><circle cx="12" cy="24" r="13" fill="#40a475"/><circle cx="25" cy="20" r="13" fill="#60b97d"/></svg>`;const parent=$('sceneObjects');parent.innerHTML=Object.keys(SECTORS).map(k=>`<div id="building-${k}" class="property ${k} hidden" role="button" tabindex="0" aria-label="Ver detalhes do setor ${SECTORS[k].label}" data-building="${k}">${art[k]}<div class="unit-label" id="label-${k}"></div></div>`).join('')+['p1','p2','p3','p4','p5'].map(k=>`<div class="plant ${k}">${tree}</div>`).join('');parent.querySelectorAll('[data-building]').forEach(node=>{node.addEventListener('click',()=>openSector(node.dataset.building));node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openSector(node.dataset.building)}})});}
+function renderTime(){
+ const progress=clamp(s.elapsed/GAME_SECONDS,0,1),remaining=Math.max(0,Math.ceil(GAME_SECONDS-s.elapsed));
+ $('timeText').textContent=`${String(Math.floor(remaining/60)).padStart(2,'0')}:${String(remaining%60).padStart(2,'0')}`;
+ $('timeBar').style.width=(progress*100)+'%';$('progressLabel').textContent=`${s.month} / ${TOTAL_MONTHS} meses`;
+ // Quatro ciclos completos ao longo da partida; o céu muda continuamente, sem saltos de cores.
+ const cycle=(progress*4)%1,hour=(6+cycle*24)%24;
+ const anchors=[[0,[12,23,47],[37,57,91]],[5,[23,43,77],[83,106,141]],[6,[104,149,185],[217,194,163]],[9,[117,179,220],[211,232,219]],[13,[110,170,213],[241,216,162]],[17,[107,100,145],[249,157,103]],[19,[37,47,88],[124,91,111]],[21,[15,28,55],[47,69,112]],[24,[12,23,47],[37,57,91]]];
+ let a=anchors[0],b=anchors[1];for(let i=0;i<anchors.length-1;i++){if(hour>=anchors[i][0]&&hour<anchors[i+1][0]){a=anchors[i];b=anchors[i+1];break;}}
+ const q=(hour-a[0])/(b[0]-a[0]),mix=(x,y)=>Math.round(x+(y-x)*q),rgb=(u,v)=>`rgb(${u.map((x,i)=>mix(x,v[i])).join(',')})`;
+ const sky=$('city').querySelector('.sky');sky.style.background=`linear-gradient(${rgb(a[1],b[1])},${rgb(a[2],b[2])} 74%,#668d76)`;
+ let phase,label;if(hour>=6&&hour<12){phase='morning';label='🌅 Manhã'}else if(hour>=12&&hour<17){phase='afternoon';label='☀️ Tarde'}else if(hour>=17&&hour<19){phase='sunset';label='🌇 Pôr do sol'}else{phase='night';label='🌙 Noite'}
+ $('city').className='scene '+phase;$('dayLabel').textContent=`${label} • ${String(Math.floor(hour)).padStart(2,'0')}h`;
+ $('city').querySelector('.stars').style.opacity=hour>=20||hour<5?.9:hour>=19?(hour-19)*.9:hour<6?(6-hour)*.9:0;
+ $('ambientDusk').style.opacity=hour>=16&&hour<20?Math.sin((hour-16)/4*Math.PI):0;
+ const isSun=hour>=6&&hour<19;
+ const orbit=isSun?(hour-6)/13:hour>=19?(hour-19)/11:(hour+5)/11;
+ // Arco semicircular: nasce atrás da cordilheira, sobe, e volta a desaparecer no horizonte.
+ const x=-3+orbit*106;
+ const y=80-72*Math.sin(Math.PI*orbit);
+ const celestial=$('city').querySelector('.sunmoon');celestial.style.left=x.toFixed(2)+'%';celestial.style.top=y.toFixed(2)+'%';
+}
+
+
+// As colunas são criadas uma única vez; cada atualização altera somente as alturas,
+// mantendo animações suaves e evitando reconstruir o gráfico a cada decisão.
+function initIntelligenceChart(){
+ const items=[
+  {key:'rep',name:'Reputação',icon:'⭐',tone:'gold'},
+  {key:'prod',name:'Produtividade',icon:'⚡',tone:'blue'},
+  {key:'demand',name:'Demanda',icon:'🛒',tone:'teal'},
+  {key:'sustain',name:'Sustentabilidade',icon:'🌱',tone:'green'}
+ ];
+ $('indicatorList').innerHTML=`<div class="intel-scale" aria-hidden="true"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div>
+  <div class="intel-content"><div class="intel-bars">${items.map(x=>`<div class="intel-column"><div id="intelBar-${x.key}" class="intel-bar intel-${x.tone}" role="meter" aria-label="${x.name}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><b id="intelValue-${x.key}" class="intel-value">0/100</b></div></div>`).join('')}</div>
+  <div class="intel-labels">${items.map(x=>`<div><span aria-hidden="true">${x.icon}</span><span>${x.name}</span></div>`).join('')}</div></div>`;
+}
+
+function update(){
+ $('cash').textContent=money(s.cash);$('cashDelta').textContent=s.cash>=100000?'Capital preservado ou ampliado':'Capital em recuperação';$('cashDelta').className='stat-detail '+(s.cash<0?'negative':'');$('profit').textContent=money(s.lastProfit);$('profit').className='stat-value '+(s.lastProfit<0?'negative':s.lastProfit>0?'positive':'');$('monthText').textContent=`Mês ${s.month} de ${TOTAL_MONTHS}`;$('employees').textContent=s.employees;$('staffDetail').textContent=`Folha: ${money(s.employees*SALARY)}/mês`;$('businessCount').textContent=unitCount();$('capacityDetail').textContent=`Capacidade: ${round(staffing()*100)}% • ideal: ${staffDemand()} pessoas`;$('yearText').textContent=`Ano ${Math.min(4,Math.floor(s.month/12)+1)}`;$('phaseLabel').textContent=`ANO ${Math.min(4,Math.floor(s.month/12)+1)} • MÊS ${s.month===48?12:s.month%12+1}`;$('fundsTag').textContent=money(s.cash);$('cityStatus').textContent=`${unitCount()} unidade(s) • ${s.employees} colaboradores`;$('emptyHint').hidden=unitCount()>0;$('revenue').textContent=money(s.lastRevenue);$('expenses').textContent=money(s.lastExpenses);$('taxes').textContent=money(s.lastTaxes);$('valuation').textContent=money(valuation());$('financeCash').textContent=money(s.cash);$('netProfit').textContent=money(s.lastProfit);$('netProfit').className=s.lastProfit<0?'negative':s.lastProfit>0?'positive':'';$('salaryRow').textContent=money(s.employees*SALARY);$('weatherLabel').textContent=({Seca:'☀️ Seca', 'Chuvas fortes':'🌧️ Chuvas fortes','Boa safra':'🌾 Boa safra','Estável':'🌤️ Clima estável'})[s.weather];$('farmNote').textContent=s.units.farm?`🌾 ${s.units.farm} fazenda(s) • melhoria agrícola nível ${s.farmUpgrade} • clima: ${s.weather}`:'🌾 Implante uma fazenda para acompanhar o clima e as safras.';
+ const indicators=[['⭐ Reputação','rep'],['⚡ Produtividade','prod'],['🛒 Demanda','demand'],['🌱 Sustentabilidade','sustain']];
+ for(const [,key] of indicators){const v=clamp(s[key]);const bar=$('intelBar-'+key),number=$('intelValue-'+key);if(bar){bar.style.height=v+'%';bar.setAttribute('aria-valuenow',String(round(v)))}if(number)number.textContent=round(v)+'/100'};$('teamWarning').textContent=unitCount()?(s.employees<staffDemand()?`⚠️ Equipe abaixo do ideal (${s.employees}/${staffDemand()}). Sua receita opera a ${round(staffing()*100)}% da capacidade.`:`✅ Equipe atende à capacidade projetada (${s.employees}/${staffDemand()}).`):'Abra seu primeiro negócio. Depois contrate funcionários para elevar a produção.';
+ $('sectorRows').innerHTML=Object.keys(SECTORS).map(k=>`<tr><td>${SECTORS[k].icon} ${SECTORS[k].label} (${s.units[k]})</td><td>${money(s.sectorLast[k].revenue)}</td><td>${money(s.sectorLast[k].expenses)}</td></tr>`).join('');for(const k of Object.keys(SECTORS)){const el=$('building-'+k);el.classList.toggle('hidden',!s.units[k]);el.classList.toggle('multiple',s.units[k]>1);$('label-'+k).innerHTML=`${SECTORS[k].short} <b>×${s.units[k]}</b>`;const c=$('actionCount-'+k);if(c)c.textContent=`${s.units[k]} unidade(s) • ${SECTORS[k].staff} pessoas/unidade`}
+ for(const id of ['hire','fire'])refreshSelect(id+'Qty',id==='hire'?5:s.employees);$('hireHint').textContent=`Equipe atual: ${s.employees} • demanda: ${staffDemand()}`;$('fireHint').textContent=`Disponíveis: ${s.employees} • indenização ${money(TERMINATION)}/pessoa`;
+ document.querySelectorAll('[data-action]').forEach(b=>{const a=b.dataset.action,def=SECTORS[a]||UPGRADES.find(v=>v.id===a),qty=a==='hire'?Number($('hireQty').value):a==='fire'?Number($('fireQty').value):0,cost=a==='hire'?qty*1100:a==='fire'?qty*TERMINATION:def?.cost||0;b.disabled=!guideReady||s.paused||s.finished||((a!=='hire'&&a!=='fire')&&cooldownRemaining()>0)||(a==='fire'&&!s.employees)||(a==='hire'&&!unitCount())||(a==='farmUpgrade'&&!s.units.farm)||(a==='training'&&!s.employees)||(!!SECTORS[a]&&unitCount()>=MAX_UNITS)||(s.cash<cost);});$('hireQty').disabled=!guideReady||s.paused||s.finished;$('fireQty').disabled=!guideReady||s.paused||s.finished||!s.employees;if(activeSector)renderSectorDetail();$('pauseBtn').textContent=!s.started?'▶ Iniciar':s.paused&&!s.finished?'▶ Continuar':'⏸ Pausar';$('pauseBtn').classList.toggle('primary',!s.started||s.paused);$('pauseBtn').classList.toggle('secondary',s.started&&!s.paused);$('pauseBtn').disabled=!guideReady||s.finished;renderPurchaseCooldown();renderTime();}
+const REVENUE_TITLES=[
+ {min:0,range:'Abaixo de R$ 500 mil',title:'🌱 Empreendedor iniciante!',message:'Sua jornada começou. Planejar investimentos e controlar custos pode abrir novas oportunidades.'},
+ {min:500000,range:'R$ 500 mil a menos de R$ 1 milhão',title:'🏪 Comerciante promissor!',message:'Seu negócio conquistou espaço no mercado e já movimentou uma receita importante.'},
+ {min:1000000,range:'R$ 1 milhão a menos de R$ 2 milhões',title:'📈 Empresário em ascensão!',message:'Você ampliou a atuação e mostrou capacidade de crescer com decisões estratégicas.'},
+ {min:2000000,range:'R$ 2 milhões a menos de R$ 4 milhões',title:'🏢 Gestor de sucesso!',message:'Sua empresa alcançou uma escala expressiva e consolidou seu potencial de expansão.'},
+ {min:4000000,range:'R$ 4 milhões a menos de R$ 8 milhões',title:'💎 Magnata dos negócios!',message:'Sua estratégia movimentou milhões e transformou sua empresa em uma grande operação.'},
+ {min:8000000,range:'R$ 8 milhões a menos de R$ 10 milhões',title:'🚀 Gigante empresarial!',message:'Seu império atingiu um faturamento extraordinário, próximo dos oito dígitos.'},
+ {min:10000000,range:'R$ 10 milhões a menos de R$ 11 milhões',title:'👑 Líder de mercado!',message:'Você rompeu a marca dos dez milhões e está prestes a chegar à categoria máxima.'},
+ {min:11000000,range:'R$ 11 milhões a menos de R$ 15 milhões',title:'🏆 Lenda do empreendedorismo!',message:'Você superou os onze milhões em faturamento e se tornou uma referência de gestão no simulador.'},
+ {min:15000000,range:'R$ 15 milhões ou mais',title:'🌟 Imperador dos negócios!',message:'Você conquistou o nível máximo do Empresário por 5 Minutos! Seu império ultrapassou R$ 15 milhões em receita bruta acumulada, um feito extraordinário de estratégia, crescimento e visão empresarial.'}
+];
+function revenueTier(revenue){return REVENUE_TITLES.reduce((chosen,tier)=>revenue>=tier.min?tier:chosen,REVENUE_TITLES[0]);}
+const BANKRUPTCY_TITLE={
+ title:'🚨 Falência Empresarial!',
+ message:'Sua empresa encerrou a simulação com o caixa negativo. Mesmo com faturamento, as despesas e decisões superaram os recursos disponíveis. Reavalie seus custos, equipe e investimentos na próxima partida.'
+};
+function finalTitle(revenue,cash){return cash<0?BANKRUPTCY_TITLE:revenueTier(revenue);}
+function renderRevenueRanking(revenue,cash){
+ const isBankrupt=cash<0;
+ const selected=finalTitle(revenue,cash);
+ if(isBankrupt){
+  $('revenueRanking').innerHTML=`<div class="revenue-tier bankrupt"><span class="tier-range">⚠️ CLASSIFICAÇÃO FINAL • SALDO NEGATIVO</span><strong>${selected.title}</strong><span class="tier-message">${selected.message}</span><span class="tier-message">Caixa final: <b>${money(cash)}</b> • Receita bruta acumulada: <b>${money(revenue)}</b></span></div>`;
+ }else{
+  $('revenueRanking').innerHTML=`<div class="revenue-tier selected"><span class="tier-range">🏅 SUA CLASSIFICAÇÃO • ${selected.range}</span><strong>${selected.title}</strong><span class="tier-message">${selected.message}</span><span class="tier-message">Receita bruta acumulada: <b>${money(revenue)}</b></span></div>`;
+ }
+}
+function finish(){if(s.finished)return;hideFinalAlert();clearManagementTip();s.finished=true;s.paused=true;const capacity=round(staffing()*100),cashScore=clamp((s.cash+50000)/2500),diversification=Object.values(s.units).filter(v=>v>0).length*25;const score=round(clamp(s.rep)*.17+clamp(s.prod)*.14+clamp(s.sustain)*.18+clamp(s.demand)*.08+cashScore*.23+capacity*.12+diversification*.08);$('endTitle').textContent=finalTitle(s.totalRevenue,s.cash).title;renderRevenueRanking(s.totalRevenue,s.cash);$('endScore').textContent=`${score} / 100 pontos`;$('endSummary').textContent=`Você administrou ${s.month} meses em quatro anos simulados. Encerrou com ${money(s.cash)} em caixa, patrimônio estimado em ${money(valuation())}, ${unitCount()} unidades, ${s.employees} funcionários e resultado operacional acumulado de ${money(s.totalProfit)}.`;
+ const details=[['Receita total',money(s.totalRevenue)],['Despesas totais',money(s.totalExpenses)],['Impostos pagos',money(s.totalTaxes)],['Indenizações',money(s.indemnities)],['Vendas de unidades',money(s.salesProceeds)],['Unidades vendidas',s.soldUnits],['Contratações',s.hireCount],['Demissões',s.fireCount],['Eventos',s.events],['Sustentabilidade',round(s.sustain)+'/100']];$('endDetails').innerHTML=details.map(([k,v])=>`<div class="fin"><span>${k}</span><b>${v}</b></div>`).join('');$('endSectorDetails').innerHTML='<h3 style="margin:18px 0 7px;font-size:14px">Resultados acumulados por setor</h3><table class="breakdown"><thead><tr><th>Atividade</th><th>Receita</th><th>Despesas operacionais</th></tr></thead><tbody>'+Object.keys(SECTORS).map(k=>`<tr><td>${SECTORS[k].label} (${s.units[k]})</td><td>${money(s.sectorTotals[k].revenue)}</td><td>${money(s.sectorTotals[k].expenses)}</td></tr>`).join('')+'</tbody></table>';$('overlay').classList.add('active');GameAudio.stopTrack();GameAudio.cue(s.cash<0?'bankrupt':'finish');update();if(window.NetworkGame)window.NetworkGame.submitResult({revenue:s.totalRevenue,cash:s.cash,title:finalTitle(s.totalRevenue,s.cash).title});}
+function pause(){
+ if(!guideReady||s.finished)return;
+ if(!s.started){
+  s.started=true;s.paused=false;
+  runningSince=performance.now()-s.elapsed*1000;
+  addLog('▶ Simulação iniciada! O relógio de 5 minutos começou a avançar.','good');
+  GameAudio.cue('start');
+ }else if(!s.paused){
+  s.elapsed=Math.min(GAME_SECONDS,Math.max(s.elapsed,(performance.now()-runningSince)/1000));
+  s.paused=true;
+  GameAudio.cue('pause');
+ }else{
+  s.paused=false;
+  GameAudio.cue('resume');
+  runningSince=performance.now()-s.elapsed*1000;
+ }
+ previousFrame=performance.now();update();
+}
+
+// Abertura original de jogo: visual apenas, nunca altera o relógio ou o caixa.
+let cinemaRunning=false;
+function showCinematicEntrance(){
+ cinemaRunning=true;
+ const intro=$('cinemaIntro');
+ $('guideOverlay').hidden=true;
+ intro.hidden=false;
+ document.body.classList.add('cinema-running');
+ intro.classList.remove('is-playing');void intro.offsetWidth;
+ intro.classList.add('is-playing');
+ $('cinemaStart').focus({preventScroll:true});
+}
+function finishCinematicEntrance(){
+ if(!cinemaRunning)return;
+ GameAudio.unlock().then(()=>GameAudio.cue('start'));
+ cinemaRunning=false;
+ $('cinemaIntro').classList.remove('is-playing');
+ $('cinemaIntro').hidden=true;
+ document.body.classList.remove('cinema-running');
+ $('guideOverlay').hidden=false;
+ $('guideAccepted').focus({preventScroll:true});
+}
+function enterGameFromGuide(){
+ if(guideReady||!$('guideAccepted').checked)return;
+ $('guideOverlay').hidden=true;
+ guideReady=true;
+ previousFrame=performance.now();
+ update();
+ notifyNews('🎯 Bem-vindo(a) ao seu império!','Você tem R$ 100.000. Quando estiver pronto, clique em ▶ Iniciar para começar os 5 minutos.','good');
+ $('pauseBtn').focus({preventScroll:true});
+}
+function resetCinematicEntrance(){
+ cinemaRunning=false;
+ $('cinemaIntro').hidden=true;
+ $('cinemaIntro').classList.remove('is-playing');
+ document.body.classList.remove('cinema-running');
+}
+function restart(){
+ GameAudio.stopTrack();
+ resetCinematicEntrance();clearManagementTip();hideFinalAlert();finalThirtyAlertShown=false;runningSince=0;
+ nextTipAt=12;lastTipKey='';for(const k of Object.keys(tipCounts))delete tipCounts[k];
+ purchaseCooldownUntil=0;lastCooldownSecond=-1;guideReady=false;
+ $('guideAccepted').checked=false;$('guideEnter').disabled=true;$('guideOverlay').hidden=true;
+ $('toastZone').replaceChildren();activeSector=null;$('sectorOverlay').classList.remove('active');
+ s=fresh();$('overlay').classList.remove('active');$('log').replaceChildren();
+ addLog('🎯 Capital inicial: R$ 100.000. Veja a abertura, leia o manual e clique em ▶ Iniciar para começar os 5 minutos.','good');
+ previousFrame=performance.now();update();showCinematicEntrance();
+}
+function frame(t){
+ const currentCd=Math.ceil(cooldownRemaining()*10);
+ if(lastCooldownSecond!==currentCd){lastCooldownSecond=currentCd;renderPurchaseCooldown();if(!currentCd&&guideReady)update();}
+ previousFrame=t;
+ if(s.started&&!s.paused&&!s.finished){
+  // Tempo cronológico real: não perde segundos mesmo que a taxa de quadros diminua.
+  s.elapsed=Math.min(GAME_SECONDS,Math.max(s.elapsed,(t-runningSince)/1000));
+  const remaining=Math.max(0,GAME_SECONDS-s.elapsed);
+  updateFinalCountdown();
+  const target=Math.min(TOTAL_MONTHS,Math.floor(s.elapsed/GAME_SECONDS*TOTAL_MONTHS+1e-8));
+  while(s.month<target&&!s.finished)monthly();
+  if(s.elapsed>=GAME_SECONDS&&!s.finished){while(s.month<TOTAL_MONTHS&&!s.finished)monthly();finish();}
+  checkTips();renderTime();
+ }
+ clockId=requestAnimationFrame(frame);
+}
+$('guideAccepted').addEventListener('change',()=>{$('guideEnter').disabled=!$('guideAccepted').checked});$('guideEnter').addEventListener('click',enterGameFromGuide);$('cinemaStart').addEventListener('click',finishCinematicEntrance);$('sellSector').addEventListener('click',()=>{if(!activeSector||s.units[activeSector]<1)return;const price=saleUnitPrice(activeSector);if(window.confirm(`Vender 1 unidade de ${SECTORS[activeSector].label} por ${money(price)}? A folha de salários permanece até você ajustar a equipe.`))sellSector(activeSector,1)});$('closeSector').addEventListener('click',closeSector);$('sectorOverlay').addEventListener('click',e=>{if(e.target===$('sectorOverlay'))closeSector()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&cinemaRunning){e.preventDefault();finishCinematicEntrance()}else if(e.key==='Escape'&&activeSector)closeSector()});$('chartsBtn').addEventListener('click',()=>document.getElementById('businessIntelligence').scrollIntoView({behavior:'smooth',block:'start'}));$('pauseBtn').addEventListener('click',pause);$('restartBtn').addEventListener('click',()=>{if(window.confirm('Reiniciar e perder todas as decisões desta partida?'))restart()});$('playAgain').addEventListener('click',()=>{restart();if(window.NetworkGame)window.NetworkGame.showRegistration();});$('viewCity').addEventListener('click',()=>{$('overlay').classList.remove('active')});setupAudioControls();initActions();$('hireQty').addEventListener('change',update);$('fireQty').addEventListener('change',update);buildScene();initIntelligenceChart();restart();clockId=requestAnimationFrame(frame);
+// A Central permanece na coluna esquerda, mas termina na mesma altura da Inteligência de Negócios.
+// Acompanhamos alterações da coluna lateral sem modificar o visual ou os botões dos cartões.
+let decisionAlignmentPending=false;
+function alignDecisionPanelWithGraph(){
+ const panel=$('decisionsPanel');
+ const scroller=$('decisionScroll');
+ if(window.innerWidth<=1060){
+  panel.style.removeProperty('height');
+  scroller.style.removeProperty('height');
+  return;
+ }
+ const bottom=$('businessIntelligence').getBoundingClientRect().bottom;
+ const top=panel.getBoundingClientRect().top;
+ const panelHeight=Math.max(330,Math.round(bottom-top));
+ panel.style.height=panelHeight+'px';
+ const header=panel.querySelector('.decisions-header');
+ const help=panel.querySelector('.decision-help');
+ const styles=getComputedStyle(panel);
+ const inner=panelHeight
+  - parseFloat(styles.paddingTop||0)
+  - parseFloat(styles.paddingBottom||0)
+  - (header?header.offsetHeight:0)
+  - (help?help.offsetHeight:0)
+  - 16;
+ scroller.style.height=Math.max(220,Math.round(inner))+'px';
+}
+function scheduleDecisionAlignment(){
+ if(decisionAlignmentPending)return;
+ decisionAlignmentPending=true;
+ requestAnimationFrame(()=>{decisionAlignmentPending=false;alignDecisionPanelWithGraph()});
+}
+window.addEventListener('resize',scheduleDecisionAlignment);
+if(typeof ResizeObserver==='function'){
+ const graphObserver=new ResizeObserver(scheduleDecisionAlignment);
+ graphObserver.observe($('businessIntelligence'));
+ graphObserver.observe($('financePanel'));
+}
+scheduleDecisionAlignment();
+// Interface de testes acessível no console, sem alterar o funcionamento dos controles.
+window.GameAudio=GameAudio;
+window.Game={get state(){return typeof structuredClone==='function'?structuredClone(s):JSON.parse(JSON.stringify(s))},act,monthly,event,pause,restart,finish,update,staffing,valuation,sellSector,saleUnitPrice,advanceToEnd(){while(s.month<TOTAL_MONTHS&&!s.finished)monthly();if(!s.finished)finish()},get definitions(){return SECTORS},checkTips,chooseManagementTip};
+</script>
+
+<style>
+#networkRegister{position:fixed;inset:0;z-index:1000000;background:radial-gradient(circle at 20% 10%,#164e63,#071521 60%);display:grid;place-items:center;padding:22px;font-family:system-ui,sans-serif;color:#f8fafc}
+#networkRegister[hidden]{display:none}
+.nr-card{width:min(520px,100%);background:#0f2434;border:1px solid #315166;border-radius:22px;padding:28px;box-shadow:0 25px 80px #0008}
+.nr-kicker{color:#7dd3fc;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.nr-card h1{font-size:clamp(26px,5vw,38px);margin:10px 0}
+.nr-card p{color:#cbd5e1;line-height:1.55}
+.nr-card label{display:block;margin:16px 0 7px;font-weight:700}
+.nr-card input{box-sizing:border-box;width:100%;padding:14px 15px;border-radius:11px;border:1px solid #456174;background:#071521;color:white;font-size:17px}
+.nr-card .nr-consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#cbd5e1;margin:17px 0}
+.nr-card .nr-consent input{width:auto;margin-top:3px}
+.nr-card button{width:100%;border:0;border-radius:12px;padding:15px;background:#fbbf24;color:#172033;font-weight:900;font-size:16px;cursor:pointer}
+.nr-card button:disabled{opacity:.45;cursor:not-allowed}
+#nrMessage{min-height:24px;color:#fca5a5;font-size:13px;margin-top:12px}
+</style>
+<div id="networkRegister">
+ <section class="nr-card">
+  <div class="nr-kicker">Feira de Profissões • Ciências de Dados</div>
+  <h1>🏢 Empresário por 5 Minutos</h1>
+  <p>Identifique-se para registrar sua participação e aparecer no ranking oficial da atividade.</p>
+  <form id="nrForm">
+   <label for="nrUsername">Nome de usuário</label>
+   <input id="nrUsername" maxlength="30" minlength="2" autocomplete="nickname" required placeholder="Ex.: EmpreendedorX">
+   <label for="nrPhone">Telefone para contato</label>
+   <input id="nrPhone" maxlength="20" inputmode="tel" autocomplete="tel" required placeholder="(xx) 9xxxx-xxxx">
+   <label class="nr-consent"><input id="nrConsent" type="checkbox" required><span>Autorizo o uso do meu telefone exclusivamente pela organização para contato sobre a premiação e assuntos desta atividade.</span></label>
+   <button id="nrSubmit" type="submit">Entrar no jogo</button>
+   <div id="nrMessage" role="status"></div>
+  </form>
+ </section>
+</div>
+<script src="/static/network.js"></script>
+
+</body>
+</html>

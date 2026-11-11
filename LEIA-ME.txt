@@ -1,0 +1,63 @@
+# Empresário por 5 Minutos — Rede local (Windows)
+
+Este pacote adapta o HTML original para funcionar com três notebooks na mesma rede Wi-Fi:
+- Notebook do público: servidor Flask + jogo.
+- Notebook dos administradores: `/admin`.
+- Notebook ligado à TV: `/ranking`.
+
+O servidor usa SQLite em `data/empresario.sqlite3`. Os dados continuam salvos no notebook do público após fechar o navegador ou reiniciar o computador.
+
+## 1. Preparar o notebook do público (servidor)
+
+1. Instale Python 3.11 ou superior em https://www.python.org/downloads/windows/
+2. Durante a instalação, marque **Add Python to PATH**.
+3. Copie a pasta inteira `empresario_rede_local` para o notebook do público.
+4. Dê duplo clique em `iniciar_servidor.bat`.
+5. Crie uma senha administrativa com pelo menos 8 caracteres. Não compartilhe essa senha com participantes.
+6. Aguarde a instalação do Flask. A janela preta precisa permanecer aberta durante a feira.
+7. Anote o endereço IPv4 mostrado, por exemplo `192.168.1.100`.
+
+## 2. Abrir nos três notebooks
+
+Todos precisam estar conectados ao mesmo roteador Wi-Fi.
+
+- Público: no próprio notebook servidor, abra `http://127.0.0.1:5000`.
+- Administração: abra `http://IP-DO-SERVIDOR:5000/admin`.
+- TV: abra `http://IP-DO-SERVIDOR:5000/ranking`.
+
+Troque `IP-DO-SERVIDOR` pelo endereço IPv4 real mostrado no primeiro notebook. Não use o endereço de exemplo literalmente.
+
+Se o Windows Firewall perguntar, permita o Python em **redes privadas**. Não habilite acesso em redes públicas. Se a página não abrir, confira se os três notebooks estão na mesma rede e se o roteador não tem isolamento de clientes (AP/client isolation).
+
+## 3. Como os dados funcionam
+
+- O participante cadastra nome de usuário e telefone no computador público.
+- O consentimento para contato da organização é obrigatório no formulário.
+- Ao terminar a partida, o jogo envia faturamento e título ao servidor.
+- O ranking público mostra somente usuário, título e faturamento.
+- O telefone só aparece depois do login administrativo.
+- O ranking considera o maior faturamento obtido por cada usuário; partidas adicionais do mesmo usuário atualizam seu melhor resultado.
+
+## 4. Reset e backup
+
+No painel `/admin`, depois de entrar com a senha:
+- **Resetar classificação** apaga os resultados das partidas e zera faturamento/título/contagem, mantendo os cadastros.
+- **Iniciar nova edição** apaga cadastros e resultados da base ativa.
+- Antes de cada operação, o servidor cria automaticamente uma cópia consistente do banco na pasta `backups`.
+
+Os backups não são apagados pelo painel. Com o servidor parado, também é possível copiar `data` e `backups` para um pendrive. Faça backups periódicos durante a feira.
+
+## 5. Privacidade e segurança
+
+- Avise os participantes por que o telefone é solicitado e quem terá acesso.
+- Colete somente dados necessários e use os telefones apenas para a finalidade informada.
+- Restrinja fisicamente o notebook servidor e a senha administrativa.
+- O painel administrativo não publica telefones na rota do ranking.
+- Esta é uma solução de rede local para evento escolar, não um sistema exposto à internet. Não configure redirecionamento de portas no roteador.
+- O servidor deve ficar ligado e conectado ao roteador. Se ele desligar, os demais notebooks deixam de receber atualizações até voltar.
+
+## 6. Observações do protótipo atualizado
+
+Esta versão já integra cadastro, gravação de resultados, painel administrativo e ranking da TV ao HTML existente. Antes da feira, faça um ensaio completo com os três notebooks, teste o firewall e confira os resultados e backups.
+
+Evite apagar manualmente `data/empresario.sqlite3`. Use as opções de reset do painel administrativo para preservar um backup automático.
